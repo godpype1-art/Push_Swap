@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/26 20:07:52 by falves-e         ###   ########.fr       */
+/*   Created: 2026/04/24 18:32:52 by falves-e          #+#    #+#             */
+/*   Updated: 2026/04/27 16:15:45 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*last;
 
-void	parser(int argc, char const *argv[]);
-int		ft_is_valid(char *str);
-void	handle_error(void);
-
-#endif
+	if (lst == NULL || del == NULL)
+		return ;
+	while (*lst)
+	{
+		last = *lst;
+		*lst = (*lst)->next;
+		ft_lstdelone(last, del);
+	}
+}

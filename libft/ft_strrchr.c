@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/26 20:07:52 by falves-e         ###   ########.fr       */
+/*   Created: 2026/04/16 15:47:26 by falves-e          #+#    #+#             */
+/*   Updated: 2026/04/23 21:54:52 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*str;
+	size_t	len;
 
-void	parser(int argc, char const *argv[]);
-int		ft_is_valid(char *str);
-void	handle_error(void);
-
-#endif
+	len = ft_strlen(s);
+	str = (char *)s;
+	while (str && len > 0)
+	{
+		if (str[len] == (char)c)
+			return (str + len);
+		len--;
+	}
+	if (str[len] == (char)c)
+		return (str);
+	return (NULL);
+}

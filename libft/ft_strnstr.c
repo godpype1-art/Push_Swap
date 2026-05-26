@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/26 20:07:52 by falves-e         ###   ########.fr       */
+/*   Created: 2026/04/16 17:30:59 by falves-e          #+#    #+#             */
+/*   Updated: 2026/04/23 22:38:59 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	len_lil;
+	size_t	i;
 
-void	parser(int argc, char const *argv[]);
-int		ft_is_valid(char *str);
-void	handle_error(void);
-
-#endif
+	len_lil = ft_strlen(little);
+	if (len_lil == 0)
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		if (big[i] == little[0])
+			if (i + len_lil <= len && ft_strncmp(big + i, little, len_lil) == 0)
+				return ((char *)big + i);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/26 20:07:52 by falves-e         ###   ########.fr       */
+/*   Created: 2026/04/13 14:24:25 by falves-e          #+#    #+#             */
+/*   Updated: 2026/04/29 13:19:16 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+size_t	ft_strlen(const char *s)
+{
+	int	len;
 
-void	parser(int argc, char const *argv[]);
-int		ft_is_valid(char *str);
-void	handle_error(void);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}
 
-#endif
+/* #include <stdio.h>
+
+int main(void)
+{
+	char *s = "Helloo";
+	int result;
+
+	result = ft_strlen(s);
+	printf("%d", result);
+	return (0); 
+} */
