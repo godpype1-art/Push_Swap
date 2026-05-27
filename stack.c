@@ -6,11 +6,11 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/05/27 18:03:47 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:18:02 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
 int	get(t_stack	*stack, int indice)
 {

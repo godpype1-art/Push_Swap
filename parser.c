@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/27 17:38:50 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:18:52 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 void	handle_error(void)
 {
 	printf("Error == TU ÉS GAY\n");
+}
+
+void print_stack(t_stack *tsak)
+{
+	int i = 0;
+	printf("%s\n", "start");
+	while (i < tsak->size)
+		printf("%d\n", get(tsak, i++));
+	printf("%s\n", "end");
 }
 /* frees array from split */
 static void	free_mem(char **array)
@@ -81,12 +90,13 @@ int	ft_is_valid(char *str)
 	return (1);
 }
 
-static void convert(const char **argv)
+static void convert(const char **argv, t_stack	*stack)
 {
 	int		nb;
 	char	**array;
 	char	**tmp;
 	int i; // iterador do printf
+	int ii;
 	
 	i = 1;
 	while (*argv)
@@ -102,13 +112,14 @@ static void convert(const char **argv)
 				if (!ft_atoi_safe(*tmp, &nb))
 					return (handle_error());
 				printf("arg%d = %d\n", i, nb); //printa o arg respetivo
-				/* while (BUFFER[I])
+				ii = 0;
+				while (ii < stack->size)
 				{
-					if(buffer[i] == nb)
-						return (handle error)
-					i++;
-				} */
-				//push(stack, content);
+					if(get(stack, ii) == nb)
+						return (handle_error());
+					ii++;
+				} 
+				push(stack, nb);
 				nb = 0;
 				i++; //iterador do printf
 			}
@@ -127,6 +138,7 @@ void	parser(int argc, char const *argv[])
 	int	i;
 	int	function;
 	int	bench;
+	t_stack *stack;
 
 	i = 1;
 	function = 0;
@@ -149,7 +161,9 @@ void	parser(int argc, char const *argv[])
 	}
 	printf("function = %d\n", function);
 	printf("bench = %d\n", bench);
-	convert(&argv[i]);
+	stack = init_stack(argc - i);
+	convert(&argv[i], stack);
+	print_stack(stack);
 }
 
 
