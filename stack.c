@@ -6,69 +6,101 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/05/27 15:33:41 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:03:47 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_node	*newnode(int content)
+int	get(t_stack	*stack, int indice)
 {
-	t_node	*node;
-
-	node = (t_node *)malloc(sizeof(t_node));
-	if (node == NULL)
-		return (NULL);
-	node->value = content;
-	node->before = NULL;
-	node->next = NULL;
-	return (node);
+	return stack->array[stack->start + (indice % stack->size)];
 }
 
-void	delnode(t_node *lst)
+void reallocate(t_stack *stack, int newsize)
 {
-	if (lst == NULL)
+	int	*new;
+	int	indice;
+
+	indice = 0;
+	stack->allocated_size = newsize;
+	new = malloc(sizeof(int) * (newsize));
+	if (!new)
 		return ;
-	free(lst);
+	while (indice < stack->size)
+	{
+		new[indice] = get(stack, indice);
+		indice++;
+	}
+	if (stack->array != NULL)
+		free(stack->array);
+	stack->array = new;
+	stack->start = 0;
+	stack->end = stack->allocated_size - 1;
 }
 
-void  push(t_stack	stack, int value)
+t_stack	*init_stack(int size)
 {
-	t_node	*new;
+	t_stack	*stack;
 
-	new = newnode(value);
-	new->before = *(stack.last);
-	*(stack.last) = new;
-	if (*(stack.size) == 0)
-		*(stack.first) = new;
-	*(stack.size) += 1;
+	stack = malloc(sizeof(t_stack));
+	stack->size = 0;
+	reallocate(stack, size);
+	return (stack);
 }
 
-int  pop(t_stack stack)
+void push(t_stack *stack, int value)
 {
-	int		result;
-	t_node	*last;
-
-	last = (*(stack.last))->before;
-	result = (*(stack.last))->value;
-	delnode(*(stack.last));
-	last->next = NULL;
-	*(stack.last) = last;
-	if (*(stack.size) == 1)
-		*(stack.first) = NULL;
-	*(stack.size) -= 1;
-	return (result);
+	stack->end++;
+	stack->end = stack->end % stack->allocated_size;
+	stack->array[stack->end] = value;
+	stack->size++;
+	if (stack->size == stack->allocated_size)
+		reallocate(stack, stack->allocated_size * 2);
 }
 
-t_stack	init_stack()
+int pop(t_stack *stack)
 {
-	t_stack	stack;
+	int value;
 
-	stack.size = malloc(sizeof(int));
-	stack.size[0] = 0;
-	stack.first = malloc(sizeof(t_node *));
-	stack.first[0] = NULL;
-	stack.last = malloc(sizeof(t_node *));
-	stack.last[0] = NULL;
-	return stack;
+	value = get(stack, stack->end);
+	stack->end--;
+	stack->end = stack->end % stack->allocated_size;
+	stack->size--;
+	return (value);
+}
+
+void rotate(t_stack *stack)
+{
+	int value;
+
+	value = get(stack, stack->size - 1);
+	stack->start--;
+	stack->start = stack->start % stack->allocated_size;
+	stack->array[stack->start] = value;
+	stack->end--;
+	stack->end = stack->end % stack->allocated_size;
+}
+
+void reverse_rotate(t_stack *stack)
+{
+	int value;
+
+	value = get(stack, 0);
+	stack->end++;
+	stack->end = stack->end % stack->allocated_size;
+	stack->array[stack->end] = value;
+	stack->start++;
+	stack->start = stack->start % stack->allocated_size;
+}
+
+void swap_first(t_stack *stack)
+{
+	int value1;
+	int	value2;
+
+	value1 = pop(stack);
+	value2 = pop(stack);
+	push(stack, value1);
+	push(stack, value2);
 }
