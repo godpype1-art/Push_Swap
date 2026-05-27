@@ -7,13 +7,18 @@ void print_stack(t_stack tsak)
 	t_node *iterater = *(tsak.last);
 
 	printf("size:%d\n", *(tsak.size));
-	printf("%s", "stack final");
+	if (*(tsak.last) != NULL && *(tsak.first) != NULL)
+	{
+		printf("last:%d\n", (*(tsak.last))->value);
+		printf("first:%d\n", (*(tsak.first))->value);
+	}
+	printf("%s", "stack final\n");
 	while (iterater != NULL)
 	{
 		printf("%d\n", iterater->value);
 		iterater = iterater->before;
 	}
-	printf("%s", "stack start");
+	printf("%s", "stack start\n");
 }
 
 int main()

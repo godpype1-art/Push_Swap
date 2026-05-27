@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 17:20:22 by afranco-          #+#    #+#             */
-/*   Updated: 2026/05/26 17:56:15 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/05/27 15:33:54 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int  popfirst(t_stack stack)
 	first = (*(stack.first))->next;
 	result = (*(stack.first))->value;
 	delnode(*(stack.first));
+	first->before = NULL;
 	*(stack.first) = first;
 	if (*(stack.size) == 1)
 		*(stack.last) = NULL;
