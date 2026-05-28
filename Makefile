@@ -5,7 +5,8 @@ FLAGS = -Wall -Wextra -Werror -g -Ilibft
 
 SRCS = main.c \
 	parser.c \
-	stack.c 
+	stack.c \
+	adaptive.c
 	
 
 OBJ = $(SRCS:.c=.o)

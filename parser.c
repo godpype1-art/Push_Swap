@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/28 14:30:41 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/05/28 19:11:56 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,17 @@ void	parser(int argc, char const *argv[])
 	stack = init_stack(argc - i);
 	convert(&argv[i], stack);
 	print_stack(stack);
+	if (function == 0)
+		adaptive_algorythm(stack);
+	else if (function == 1)
+		simple();
+		//simple_algorythm
+	else if (function == 2)
+		medium();
+		//medium algorythm
+	else if (function == 3)
+		complex();
+		//complex algorythm	
 }
 
 
