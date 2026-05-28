@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/27 18:18:52 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:30:41 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ void	parser(int argc, char const *argv[])
 	bench = 0;
 	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
 	{
+		/* verify expected behaviour
+		this function executes only the last algorythm flag read */
 		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
 			function = 1;
 		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)

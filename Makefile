@@ -5,6 +5,7 @@ FLAGS = -Wall -Wextra -Werror -g -Ilibft
 
 SRCS = main.c \
 	parser.c \
+	stack.c 
 	
 
 OBJ = $(SRCS:.c=.o)
@@ -12,8 +13,7 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	cp $(LIB) $(NAME)
-	ar -rcs $(NAME) $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -L libft -lft -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@

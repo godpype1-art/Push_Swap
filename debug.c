@@ -1,6 +1,4 @@
 
-#include "stack.h"
-
 void print_stack(t_stack *tsak)
 {
 	int i = 0;
