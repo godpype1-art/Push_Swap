@@ -1,9 +1,15 @@
 
-#include "stack.h"
+#include "push_swap.h"
 
 void print_stack(t_stack *tsak)
 {
 	int i = 0;
+	printf("start:%d, end:%d\n", tsak->start, tsak->end);
+	printf("size:%d, allocated_size:%d\n", tsak->size, tsak->allocated_size);
+	while (i < tsak->allocated_size)
+		printf("%d, ", tsak->array[i++]);
+	printf("\n");
+	i = 0;
 	printf("%s\n", "start");
 	while (i < tsak->size)
 		printf("%d\n", get(tsak, i++));
@@ -12,28 +18,46 @@ void print_stack(t_stack *tsak)
 
 int main()
 {
-	t_stack	*stack;
+	t_stack	*stackA;
+	int		yy;
+	int		where;
 
-	stack = init_stack(8);
-	print_stack(stack);
-	push(stack, 2);
-	push(stack, 1);
-	push(stack, 20);
-	print_stack(stack);
-	int value = pop(stack);
-	printf("value:%d\n", value);
-	print_stack(stack);
-	value = pop(stack);
-	printf("value:%d\n", value);
-	print_stack(stack);
-	push(stack, 23);
-	push(stack, 31);
-	print_stack(stack);
+	stackA = init_stack(10);
+	push(stackA, 8);
+	push(stackA, 9);
+	push(stackA, 2);
+	push(stackA, 1);
+	push(stackA, 3);
+	push(stackA, 90);
+	push(stackA, 24);
+	push(stackA, 4);
+	print_stack(stackA);
 
-	rotate(stack);
-	print_stack(stack);
-	reverse_rotate(stack);
-	print_stack(stack);
-	swap_first(stack);
-	print_stack(stack);
+	yy = 1;
+	while (yy < stackA->size)
+	{
+		where = yy;
+		while (get(stackA, 0) > get(stackA, 1) && where > 0)
+		{
+			swap_first(stackA);
+			//ft_putstr_fd("sa\n", 1);
+			//print_stack(stackA);
+			rotate(stackA);
+			//ft_putstr_fd("ra\n", 1);
+			//print_stack(stackA);
+			where--;
+		}
+		while (where < yy)
+		{
+			reverse_rotate(stackA);
+			//ft_putstr_fd("rra\n", 1);
+			where++;
+			//print_stack(stackA);
+		}
+		yy++;
+		reverse_rotate(stackA);
+		//ft_putstr_fd("rra\n", 1);
+	}
+	reverse_rotate(stackA);
+	print_stack(stackA);
 }

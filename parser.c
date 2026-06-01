@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/01 12:03:38 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/01 16:29:34 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	handle_error(void)
 void print_stack(t_stack *tsak)
 {
 	int i = 0;
+	printf("start:%d, end:%d\n", tsak->start, tsak->end);
+	printf("size:%d, allocated_size:%d\n", tsak->size, tsak->allocated_size);
+	while (i < tsak->allocated_size)
+		printf("%d, ", tsak->array[i++]);
+	printf("\n");
+	i = 0;
 	printf("%s\n", "start");
 	while (i < tsak->size)
 		printf("%d\n", get(tsak, i++));
@@ -145,6 +151,8 @@ void	parser(int argc, char const *argv[])
 	bench = 0;
 	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
 	{
+		/* verify expected behaviour
+		this function executes only the last algorythm flag read */
 		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
 			function = 1;
 		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)
@@ -163,7 +171,18 @@ void	parser(int argc, char const *argv[])
 	printf("bench = %d\n", bench);
 	stack = init_stack(argc - i);
 	convert(&argv[i], stack);
-	insertion_sort(stack);
+	print_stack(stack);
+	if (function == 0)
+		adaptive_algorythm(stack);
+	else if (function == 1)
+		insertion_sort(stack);
+		//simple_algorythm
+	else if (function == 2)
+		printf("medium\n");
+		//medium algorythm
+	else if (function == 3)
+		printf("complex\n");
+		//complex algorythm	
 	print_stack(stack);
 }
 

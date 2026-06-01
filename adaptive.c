@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   adaptive.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
+/*   Updated: 2026/05/28 19:13:02 by falves-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+/* calculates disorder */
+float	disorder_check(t_stack *stackA)
+{
+	int	total_pairs;
+	int	mistakes;
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 1;
+	if (stackA->size < 2)
+		return(0.0f);
+	mistakes = 0;
+	total_pairs = 0;
+	while (i < stackA->size)
+	{
+		j = i + 1;
+		while (j < stackA->size)
+		{
+			total_pairs += 1;
+			if (get(stackA, i) > get(stackA, j))
+				mistakes += 1;
+			j++;
+		}
+		i++;
+	}
+	printf("total_pairs = %d\n", total_pairs);
+	printf("mistakes = %d\n", mistakes);
+	return ((float)mistakes / total_pairs);
+}
+
+/* checks disorder and guides to algorythm */
+void	adaptive_algorythm(t_stack *stackA)
+{
+	float	disorder;
+	float	medium;
+	float	high;
+
+	disorder = disorder_check(stackA);
+	printf("disorder = %f\n", disorder);
+	medium = 0.2f;
+	high = 0.5f;
+	if (disorder < 0.0001f)
+	{
+		printf("sorted\n");
+		return ;
+	}
+	else if (disorder < medium)
+		printf("using simple\n");
+		//simple_alg(stackA);
+	else if (disorder < high)
+		printf("using medium\n");	
+	//medium_alg(stackA);
+	else
+		printf("using complex\n");
+		//complex_alg(stackA);	
+}
+
