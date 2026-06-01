@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/27 18:18:52 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/01 12:03:38 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	parser(int argc, char const *argv[])
 	printf("bench = %d\n", bench);
 	stack = init_stack(argc - i);
 	convert(&argv[i], stack);
+	insertion_sort(stack);
 	print_stack(stack);
 }
 

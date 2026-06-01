@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/27 18:09:57 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/01 12:02:08 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void swap_first(t_stack *stack);
 void	parser(int argc, char const *argv[]);
 int		ft_is_valid(char *str);
 void	handle_error(void);
+void	insertion_sort(t_stack *stackA);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/05/28 00:03:04 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/01 12:01:59 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,25 @@
 
 void insertion_sort(t_stack *stackA)
 {
-	t_stack *stackB;
 	int		yy;
 	int		where;
 
-	stackB = init_stack(stackA->allocated_size);
-	reverse_rotate(stackA);
 	yy = 1;
-	while (yy < stackB->size)
+	while (yy < stackA->size)
 	{
-		push(stackB, pop(stackA));
+		where = yy;
+		while (get(stackA, 0) > get(stackA, 1) && where > 0)
+		{
+			swap_first(stackA);
+			rotate(stackA);
+			where--;
+		}
+		while (where < yy)
+		{
+			reverse_rotate(stackA);
+			where++;
+		}
+		reverse_rotate(stackA);
 		yy++;
 	}
 }
