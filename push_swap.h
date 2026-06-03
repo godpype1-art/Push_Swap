@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/01 12:21:50 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/03 16:34:31 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <math.h>
 
 //REMOVE LATER
 #include <stdio.h>
@@ -44,5 +45,7 @@ void	adaptive_algorythm(t_stack *stackA);
 float	disorder_check(t_stack *stackA);
 void	insertion_sort(t_stack *stackA);
 void	print_stack(t_stack *tsak);
+void	bucket_sort(t_stack *stackA);
+void	normalize(t_stack *stackA);
 
 #endif

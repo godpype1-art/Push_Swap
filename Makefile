@@ -7,7 +7,8 @@ SRCS = main.c \
 	parser.c \
 	stack.c \
 	adaptive.c \
-	insertion_sort.c
+	insertion_sort.c \
+	merge_sort.c
 
 OBJ = $(SRCS:.c=.o)
 

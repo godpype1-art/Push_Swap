@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/01 17:04:59 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/03 13:31:23 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get(t_stack	*stack, int indice)
 {
 	//printf("indice:%d, get:%d, start:%d, end:%d\n", indice, (stack->start + indice) % stack->allocated_size, stack->start, stack->end);
-	return stack->array[(stack->start + indice) % stack->allocated_size];
+	return (stack->array[(stack->start + indice) % stack->allocated_size]);
 }
 
 int moduler_remainder(int a, int b)
