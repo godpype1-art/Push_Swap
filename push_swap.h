@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/03 16:34:31 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:12:03 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void	insertion_sort(t_stack *stackA);
 void	print_stack(t_stack *tsak);
 void	bucket_sort(t_stack *stackA);
 void	normalize(t_stack *stackA);
+int		push_buckets(t_stack *stackA, t_stack *stackB);
+void	sort_stack(t_stack *stackA, t_stack *stackB, int bucket_count);
 
 #endif

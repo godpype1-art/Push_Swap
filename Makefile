@@ -8,14 +8,14 @@ SRCS = main.c \
 	stack.c \
 	adaptive.c \
 	insertion_sort.c \
-	merge_sort.c
+	bucket_sort.c
 
 OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(FLAGS) $(OBJ) -L libft -lft -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) -L libft -lft -lm -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
