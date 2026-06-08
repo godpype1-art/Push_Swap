@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:27:21 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:48:30 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,24 @@ typedef struct s_stack
 	int	size;
 	int	allocated_size;
 }	t_stack;
+
+typedef struct T_PushSwap
+{
+	t_stack *stackA;
+	t_stack *stackB;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	int		total;
+}	PushSwap;
 
 /*  stack functions */
 
