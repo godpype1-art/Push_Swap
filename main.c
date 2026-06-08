@@ -6,20 +6,21 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/04 17:27:40 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:38:09 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(void)
+int main(int argc, char const *argv[])
 {
-	//int argc, char const *argv[]
-	t_stack	*stackA;
+	
+	/* t_stack	*stackA;
 	t_stack	*stackB;
-	int bucket_count;
+	int bucket_count; */
 
-	stackA = init_stack(9);
+	parser(argc, argv);
+	/* stackA = init_stack(9);
 	stackB = init_stack(stackA->allocated_size);
 	push(stackA, 8);
 	push(stackA, 9);
@@ -37,11 +38,15 @@ int main(void)
 	print_stack(stackA);
 	printf("\n======= stackB =======\n\n");
 	print_stack(stackB);
+	printf("\n=== sorting in buckets ===\n\n");
 	bucket_count = push_buckets(stackA, stackB);
 	printf("\n===== bucket sorted ====\n\n");
 	print_stack(stackB);
-	printf("\n==== reverse sorted ====\n\n");
+	printf("\n=== sorting & pushing ===\n\n");
 	sort_stack(stackA, stackB, bucket_count);
+	printf("\n===== stackB empty =====\n\n");
 	print_stack(stackB);
+	printf("\n===== stackA sorted =====\n\n");
+	print_stack(stackA); */
 	return (0);
 }

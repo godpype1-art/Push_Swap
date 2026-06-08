@@ -6,128 +6,90 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/04 17:28:39 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:08:13 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void insertion_sort_mini(t_stack *stackB, int limit)
+/* pushes to stackB in bucket order, highest on top */
+void	push_buckets(t_stack *stackA, t_stack *stackB, int high, int low)
 {
-	int	yy;
-	int	where;
-	
-	limit = 0;
-	yy = 1;
-	while (yy < stackB->size)
-	{
-		where = yy;
-		while (get(stackB, 0) > get(stackB, 1) && where > 0)
-		{
-			swap_first(stackB);
-			ft_putstr_fd("sa\n", 1);
-			rotate(stackB);
-			ft_putstr_fd("ra\n", 1);
-			where--;
-		}
-		while (where < yy)
-		{
-			printf("1");
-			reverse_rotate(stackB);
-			ft_putstr_fd("rra\n", 1);
-			where++;
-		}
-		yy++;
-		reverse_rotate(stackB);
-		printf("1");
-		ft_putstr_fd("rra\n", 1);
-	}
-	reverse_rotate(stackB);
-	ft_putstr_fd("rra\n", 1);
-}
+	int	rotations;
 
-void	sort_stack(t_stack *stackA, t_stack *stackB, int bucket_count)
-{
-	int	current_bucket;
-	int	high;
-	int low;
-	int	i;
-	
-	current_bucket = bucket_count - 1;
-	while (current_bucket >= 0)
+	rotations = 0;
+	while (rotations < stackA->size)
 	{
-		low  = current_bucket * bucket_count;
-    	high = low + bucket_count - 1;
-   		insertion_sort_mini(stackB, bucket_count);
-	}
-    i = 0;
-    while (i < bucket_count && stackB->size > 0)
-	{
-		push(stackA, get(stackB, i));
-        i++;
-    	current_bucket--;
+		if (get(stackA, 0) >= low && get(stackA, 0) <= high)
+		{
+			push(stackB, pop(stackA));
+			rotations = 0;
+			printf("pb\n");
+		}
+		else
+		{
+			rotate(stackA);
+			printf("ra\n");
+			rotations++;
+		}
 	}
 }
 
-int	push_buckets(t_stack *stackA, t_stack *stackB)
+/* organizes the stackA through buckets, highest on the bottom*/
+int	buckets(t_stack *stackA, t_stack *stackB)
 {
 	int	bucket_count;
-	int current_bucket;
+	int	current_bucket;
 	int	low;
 	int	high;
 	int	rotations;
 
 	bucket_count = (int)sqrt((double)stackA->size);
 	while (bucket_count * bucket_count < stackA->size)
-    	bucket_count++;
-	printf("buckets = %i\n", bucket_count);
+		bucket_count++;
 	current_bucket = 0;
-	while(current_bucket < bucket_count)
+	while (current_bucket < bucket_count)
 	{
 		low = bucket_count * current_bucket;
 		high = low + bucket_count - 1;
 		rotations = 0;
-		while (rotations < stackA->size)
-		{
-			if (get(stackA, 0) >= low && get(stackA, 0) <= high)
-			{
-				push(stackB, pop(stackA));
-				rotations = 0;
-				printf("pb\n");
-			}
-			else
-			{
-				rotate(stackA);
-				printf("ra\n");
-				rotations++;
-			}
-		}
+		push_buckets(stackA, stackB, high, low);
 		current_bucket++;
 	}
 	return (bucket_count);
 }
 
+/* finds each value its rank */
+int	ranking(t_stack *stackA, int i)
+{
+	int	j;
+	int	rank;
+
+	rank = 0;
+	j = 0;
+	while (j < stackA->size)
+	{
+		if (get(stackA, i) > get(stackA, j))
+			rank++;
+		j++;
+	}
+	return (rank);
+}
+
+/* This function set the stack values to 0,...,n-1 */
 void	normalize(t_stack *stackA)
 {
 	int	*ranks;
 	int	rank;
 	int	i;
-	int	j;
-	
+
 	ranks = malloc(sizeof(int) * stackA->size);
 	if (ranks == NULL)
 		return (handle_error());
 	i = 0;
 	while (i < stackA->size)
 	{
-		j = 0;
-		rank = 0;
-		while (j < stackA->size)
-		{
-			if (get(stackA, i) > get(stackA, j))
-				rank++;
-			j++;
-		}
+		rank = ranking(stackA, i);
 		ranks[i] = rank;
 		i++;
 	}
@@ -140,16 +102,26 @@ void	normalize(t_stack *stackA)
 	free(ranks);
 }
 
+/* main unction of the sorting algorithm */
 void	bucket_sort(t_stack *stackA)
 {
-	t_stack	*stackB;
+	t_stack	*stackb;
 	int		bucket_count;
-	
-	stackB = init_stack(stackA->size);
+
+	printf("\n==== begin sorting ====\n\n");
+	stackb = init_stack(stackA->size);
+	printf("\n======= StackB =======\n\n");
+	print_stack(stackb);
+	printf("\n===== Normalizing =====\n\n");
 	normalize(stackA);
-	bucket_count = push_buckets(stackA, stackB);
-	sort_stack(stackA, stackB, bucket_count);
-	
-	free(stackB->array);
-	free(stackB);	
+	print_stack(stackA);
+	printf("\n==== Pushing Buckets ====\n\n");
+	bucket_count = buckets(stackA, stackb);
+	print_stack(stackb);
+	printf("\n==== Pushing Sorted ====\n\n");
+	sort_stack(stackA, stackb, bucket_count);
+	print_stack(stackA);
+	printf("\n===== End Sorting =====\n\n");
+	free(stackb->array);
+	free(stackb);
 }

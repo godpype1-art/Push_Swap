@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/04 17:01:03 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:00:56 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_stack	*init_stack(int size)
 
 	stack = malloc(sizeof(t_stack));
 	stack->size = 0;
+	stack->array = NULL;
 	reallocate(stack, size);
 	return (stack);
 }
@@ -74,7 +75,7 @@ int pop(t_stack *stack)
 	return (value);
 }
 
-void rotate(t_stack *stack)
+void reverse_rotate(t_stack *stack)
 {
 	int value;
 
@@ -84,7 +85,7 @@ void rotate(t_stack *stack)
 	stack->end = moduler_remainder(stack->end - 1, stack->allocated_size);
 }
 
-void reverse_rotate(t_stack *stack)
+void rotate(t_stack *stack)
 {
 	int value;
 

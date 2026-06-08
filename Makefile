@@ -5,10 +5,12 @@ FLAGS = -Wall -Wextra -Werror -g -Ilibft
 
 SRCS = main.c \
 	parser.c \
+	parser_2.c \
 	stack.c \
 	adaptive.c \
 	insertion_sort.c \
-	bucket_sort.c
+	bucket_sort.c \
+	bucket_sort_2.c 
 
 OBJ = $(SRCS:.c=.o)
 

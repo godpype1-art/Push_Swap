@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/05/28 19:13:02 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:12:24 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ float	disorder_check(t_stack *stackA)
 	int	mistakes;
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 1;
 	if (stackA->size < 2)
-		return(0.0f);
+		return (0.0f);
 	mistakes = 0;
 	total_pairs = 0;
 	while (i < stackA->size)
@@ -38,8 +38,6 @@ float	disorder_check(t_stack *stackA)
 		}
 		i++;
 	}
-	printf("total_pairs = %d\n", total_pairs);
-	printf("mistakes = %d\n", mistakes);
 	return ((float)mistakes / total_pairs);
 }
 
@@ -60,13 +58,9 @@ void	adaptive_algorythm(t_stack *stackA)
 		return ;
 	}
 	else if (disorder < medium)
-		printf("using simple\n");
-		//simple_alg(stackA);
+		insertion_sort(stackA);
 	else if (disorder < high)
-		printf("using medium\n");	
-	//medium_alg(stackA);
+		bucket_sort(stackA);
 	else
 		printf("using complex\n");
-		//complex_alg(stackA);	
 }
-
