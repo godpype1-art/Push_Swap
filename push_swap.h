@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/01 12:21:50 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:09:11 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void	adaptive_algorythm(t_stack *stackA);
 float	disorder_check(t_stack *stackA);
 void	insertion_sort(t_stack *stackA);
 void	print_stack(t_stack *tsak);
+void	merge(t_stack *stackA, t_stack *stackB, int lo, int mid, int hi);
+void 	merge_sorting(t_stack *stackA);
 
 #endif

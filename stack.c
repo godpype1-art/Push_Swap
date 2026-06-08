@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/01 17:04:59 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:03:25 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_stack	*init_stack(int size)
 
 	stack = malloc(sizeof(t_stack));
 	stack->size = 0;
+	stack->array = NULL;
 	reallocate(stack, size);
 	return (stack);
 }
@@ -74,7 +75,7 @@ int pop(t_stack *stack)
 	return (value);
 }
 
-void rotate(t_stack *stack)
+void reverse_rotate(t_stack *stack)
 {
 	int value;
 
@@ -84,7 +85,7 @@ void rotate(t_stack *stack)
 	stack->end = moduler_remainder(stack->end - 1, stack->allocated_size);
 }
 
-void reverse_rotate(t_stack *stack)
+void rotate(t_stack *stack)
 {
 	int value;
 

@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/01 17:40:34 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:58:35 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ void insertion_sort(t_stack *stackA)
 		{
 			swap_first(stackA);
 			ft_putstr_fd("sa\n", 1);
-			rotate(stackA);
-			ft_putstr_fd("ra\n", 1);
+			reverse_rotate(stackA);
+			ft_putstr_fd("rra\n", 1);
 			where--;
 		}
 		while (where < yy)
 		{
-			reverse_rotate(stackA);
+			rotate(stackA);
 			ft_putstr_fd("rra\n", 1);
 			where++;
 		}
 		yy++;
-		reverse_rotate(stackA);
+		rotate(stackA);
 		ft_putstr_fd("rra\n", 1);
 	}
-	reverse_rotate(stackA);
+	rotate(stackA);
 	ft_putstr_fd("rra\n", 1);
 }
