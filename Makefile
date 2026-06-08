@@ -5,16 +5,20 @@ FLAGS = -Wall -Wextra -Werror -g -Ilibft
 
 SRCS = main.c \
 	parser.c \
+	parser_2.c \
 	stack.c \
 	adaptive.c \
-	insertion_sort.c
+	insertion_sort.c \
+	bucket_sort.c \
+	bucket_sort_2.c \
+	merge_sort.c 
 
 OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(FLAGS) $(OBJ) -L libft -lft -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) -L libft -lft -lm -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@

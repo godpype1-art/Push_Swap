@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_sorting.c                                    :+:      :+:    :+:   */
+/*   merge_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 18:13:17 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/08 19:18:18 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:31:11 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void merge(t_stack *stackA, t_stack *stackB, int lo, int mid, int hi)
     else
         hyper_rotate(stackA, variance, 1);
     while (variance-- > 0 || hi_variance-- > 0)
-        push(stackB, pop(stackA));
+		push(stackB, pop(stackA));
 	printf("%s\n", "stackB");
 	print_stack(stackB);
 	while (stackB->size)

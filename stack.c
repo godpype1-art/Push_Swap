@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/08 17:03:25 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:29:29 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get(t_stack	*stack, int indice)
 {
 	//printf("indice:%d, get:%d, start:%d, end:%d\n", indice, (stack->start + indice) % stack->allocated_size, stack->start, stack->end);
-	return stack->array[(stack->start + indice) % stack->allocated_size];
+	return (stack->array[(stack->start + indice) % stack->allocated_size]);
 }
 
 int moduler_remainder(int a, int b)

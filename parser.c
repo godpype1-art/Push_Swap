@@ -6,20 +6,14 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/01 16:29:34 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:36:31 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-/* standar error issue */
-void	handle_error(void)
-{
-	printf("Error == TU ÉS GAY\n");
-}
-
-void print_stack(t_stack *tsak)
+//REMOVE LATER
+void	print_stack(t_stack *tsak)
 {
 	int i = 0;
 	printf("start:%d, end:%d\n", tsak->start, tsak->end);
@@ -33,49 +27,7 @@ void print_stack(t_stack *tsak)
 		printf("%d\n", get(tsak, i++));
 	printf("%s\n", "end");
 }
-/* frees array from split */
-static void	free_mem(char **array)
-{
-	int i;
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-/* version atoi that breaks if overflow/underflow */
-int ft_atoi_safe(char *str, int *res)
-{
-	int	i;
-	int sign;
-
-	i = 0;
-	sign = 1;
-	if (str == NULL)
-		return (0);
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;	
-	}
-	while (str[i] != '\0')
-	{
-		if (sign == 1 && (*res > (INT32_MAX - (str[i] - '0')) / 10))
-			return (0);
-		if (sign == -1 && (*res < (INT32_MIN - ((str[i] - '0') * sign)) / 10))
-			return (0);
-		*res = (*res * 10) + ((str[i] - '0') * sign);
-		i++;
-	}
-	return (1);
-}
-
-
-/* Checks if args are in a valid format */
 int	ft_is_valid(char *str)
 {
 	int	i;
@@ -96,15 +48,33 @@ int	ft_is_valid(char *str)
 	return (1);
 }
 
-static void convert(const char **argv, t_stack	*stack)
+/* arrange every arg through atoi */
+void	arrange(t_stack *stack, char *tmp, int *nb)
 {
-	int		nb;
+	int	i;
+	int	num;
+
+	num = *nb;
+	if (!ft_atoi_safe(tmp, &num))
+		return (handle_error());
+	i = 0;
+	while (i < stack->size)
+	{
+		if(get(stack, i) == num)
+			return (handle_error());
+		i++;
+	} 
+	push(stack, num);
+	nb = 0;
+}
+
+/* iterates args, separates if needed */
+void	convert(const char **argv, t_stack	*stack)
+{
 	char	**array;
 	char	**tmp;
-	int i; // iterador do printf
-	int ii;
+	int		nb;
 	
-	i = 1;
 	while (*argv)
 	{
 		array = ft_split(*argv, ' ');
@@ -115,19 +85,8 @@ static void convert(const char **argv, t_stack	*stack)
 		{
 			if (ft_is_valid(*tmp))
 			{
-				if (!ft_atoi_safe(*tmp, &nb))
-					return (handle_error());
-				printf("arg%d = %d\n", i, nb); //printa o arg respetivo
-				ii = 0;
-				while (ii < stack->size)
-				{
-					if(get(stack, ii) == nb)
-						return (handle_error());
-					ii++;
-				} 
-				push(stack, nb);
+				arrange(stack, *tmp, &nb);
 				nb = 0;
-				i++; //iterador do printf
 			}
 			else
 				return(handle_error());
@@ -138,21 +97,45 @@ static void convert(const char **argv, t_stack	*stack)
 	}
 }
 
-/* main parser function, detects flags and saves them */
+/* creates the stack, reads redirects to algs depending on flags */
+void	create_stack(int argc, char const **argv, int function, int bench)
+{
+	t_stack	*stack;
+	t_stack	*tmp;
+	
+	tmp = init_stack(argc);
+	stack = init_stack(argc);
+	convert(argv, tmp);
+	printf("\n==== tmp ====\n\n");
+	print_stack(tmp);
+	while (tmp->size)
+		push(stack, pop(tmp));
+	printf("\n==== stack ====\n\n");
+	print_stack(stack);
+	printf("\n==== bucket ====\n\n");
+	if (function == 0)
+		adaptive_algorythm(stack);
+	else if (function == 1)
+		insertion_sort(stack);
+	else if (function == 2)
+		bucket_sort(stack);
+	else if (function == 3)
+		merge_sorting(stack);
+	if (bench == 1)
+		printf("bench = 1\n");
+}
+/* receives the imput, reads flags and stores integers */
 void	parser(int argc, char const *argv[])
 {
 	int	i;
 	int	function;
 	int	bench;
-	t_stack *stack;
 
 	i = 1;
 	function = 0;
 	bench = 0;
 	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
 	{
-		/* verify expected behaviour
-		this function executes only the last algorythm flag read */
 		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
 			function = 1;
 		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)
@@ -169,22 +152,9 @@ void	parser(int argc, char const *argv[])
 	}
 	printf("function = %d\n", function);
 	printf("bench = %d\n", bench);
-	stack = init_stack(argc - i);
-	convert(&argv[i], stack);
-	print_stack(stack);
-	if (function == 0)
-		adaptive_algorythm(stack);
-	else if (function == 1)
-		insertion_sort(stack);
-		//simple_algorythm
-	else if (function == 2)
-		printf("medium\n");
-		//medium algorythm
-	else if (function == 3)
-		printf("complex\n");
-		//complex algorythm	
-	print_stack(stack);
+	create_stack(argc - i, &argv[i], function, bench);
 }
+
 
 
 //#include <stdio.h>
