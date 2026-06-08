@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 14:38:09 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:20:52 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int argc, char const *argv[])
 	t_stack	*stackB;
 	int bucket_count; */
 
-	parser(argc, argv);
-	/* stackA = init_stack(9);
+	//parser(argc, argv);
+	stackA = init_stack(9);
 	stackB = init_stack(stackA->allocated_size);
 	push(stackA, 8);
 	push(stackA, 9);
@@ -47,6 +47,6 @@ int main(int argc, char const *argv[])
 	printf("\n===== stackB empty =====\n\n");
 	print_stack(stackB);
 	printf("\n===== stackA sorted =====\n\n");
-	print_stack(stackA); */
+	print_stack(stackA);
 	return (0);
 }
