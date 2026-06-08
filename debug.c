@@ -19,6 +19,7 @@ void print_stack(t_stack *tsak)
 int main()
 {
 	t_stack	*stackA;
+    t_stack	*stackB;
 	int		yy;
 	int		where;
 
@@ -33,31 +34,12 @@ int main()
 	push(stackA, 4);
 	print_stack(stackA);
 
-	yy = 1;
-	while (yy < stackA->size)
-	{
-		where = yy;
-		while (get(stackA, 0) > get(stackA, 1) && where > 0)
-		{
-			swap_first(stackA);
-			//ft_putstr_fd("sa\n", 1);
-			//print_stack(stackA);
-			rotate(stackA);
-			//ft_putstr_fd("ra\n", 1);
-			//print_stack(stackA);
-			where--;
-		}
-		while (where < yy)
-		{
-			reverse_rotate(stackA);
-			//ft_putstr_fd("rra\n", 1);
-			where++;
-			//print_stack(stackA);
-		}
-		yy++;
-		reverse_rotate(stackA);
-		//ft_putstr_fd("rra\n", 1);
-	}
-	reverse_rotate(stackA);
+	stackB = init_stack(stackA->size);
+	print_stack(stackB);
+    push(stackB, pop(stackA));
+    push(stackB, pop(stackA));
+    push(stackB, pop(stackA));
+    push(stackB, pop(stackA));
 	print_stack(stackA);
+	print_stack(stackB);
 }
