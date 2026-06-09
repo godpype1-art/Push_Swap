@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/08 19:23:06 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:47:03 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void insertion_sort(t_stack *stackA)
+void insertion_sort(t_stack *stackA, t_bench *bench)
 {
 	int	yy;
 	int	where;
 	
+	bench->algorithm = 1;
 	yy = 1;
 	while (yy < stackA->size)
 	{

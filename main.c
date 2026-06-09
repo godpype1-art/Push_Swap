@@ -6,20 +6,24 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:41:51 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:28:17 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
 	
 	/* t_stack	*stackA;
 	t_stack	*stackB;
 	int bucket_count; */
 
-	parser(argc, argv);
+	t_bench *bench;
+
+	bench = inicialize_bench();
+	print_bench(bench);
+	//parser(argc, argv);
 /* 	stackA = init_stack(9);
 	stackB = init_stack(stackA->allocated_size);
 	push(stackA, 8);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:29:51 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:48:25 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,23 @@ float	disorder_check(t_stack *stackA)
 }
 
 /* checks disorder and guides to algorythm */
-void	adaptive_algorythm(t_stack *stackA)
+void	adaptive_algorithm(t_stack *stackA, t_bench *bench)
 {
-	float	disorder;
 	float	medium;
 	float	high;
 
-	disorder = disorder_check(stackA);
-	printf("disorder = %f\n", disorder);
+	printf("disorder = %f\n", bench->disorder);
 	medium = 0.2f;
 	high = 0.5f;
-	if (disorder < 0.0001f)
+	if (bench->disorder < 0.0001f)
 	{
 		printf("sorted\n");
 		return ;
 	}
-	else if (disorder < medium)
-		insertion_sort(stackA);
-	else if (disorder < high)
-		bucket_sort(stackA);
+	else if (bench->disorder < medium)
+		insertion_sort(stackA, bench);
+	else if (bench->disorder < high)
+		bucket_sort(stackA, bench);
 	else
 		merge_sorting(stackA);
 }

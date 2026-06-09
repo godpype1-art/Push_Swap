@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:27:21 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:47:38 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,27 @@ typedef struct s_stack
 	int	allocated_size;
 }	t_stack;
 
+typedef struct s_bench
+{
+	int		bench;
+	int		fd;
+	float	disorder;
+	int		adaptive;
+	int		algorithm;
+	int		total_ops;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+}	t_bench;
+
 /*  stack functions */
 
 t_stack	*init_stack(int size);
@@ -49,20 +70,20 @@ void	handle_error(void);
 int		ft_atoi_safe(char *str, int *res);
 void	arrange(t_stack *stack, char *tmp, int *nb);
 void	convert(const char **argv, t_stack	*stack);
-void	create_stack(int argc, char const **argv, int function, int bench);
+void	create_stack(int argc, char const **argv, t_bench *bench);
 
 /*  adaptive sort functions */
 
-void	adaptive_algorythm(t_stack *stackA);
+void	adaptive_algorithm(t_stack *stackA, t_bench *bench);
 float	disorder_check(t_stack *stackA);
 
 /*  insertion sort functions */
 
-void	insertion_sort(t_stack *stackA);
+void	insertion_sort(t_stack *stackA, t_bench *bench);
 
 /*  bucket sort functions */
 
-void	bucket_sort(t_stack *stackA);
+void	bucket_sort(t_stack *stackA, t_bench *bench);
 void	normalize(t_stack *stackA);
 int		ranking(t_stack *stackA, int i);
 int		buckets(t_stack *stackA, t_stack *stackB);
@@ -78,6 +99,8 @@ void 	merge_sorting(t_stack *stackA);
 
 /*  other functions */
 
+t_bench	*inicialize_bench(void);
+void	print_bench(t_bench *bench);
 void	print_stack(t_stack *tsak);
 void	free_mem(char **array);
 void	handle_error(void);
