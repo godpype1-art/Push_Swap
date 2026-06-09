@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merge_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 18:13:17 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/09 17:48:42 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:19:25 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static void sort(t_pushswap *pushswap, int lo, int hi)
 
 void merge_sorting(t_pushswap *pushswap)
 {
+	pushswap->algorithm = 3;
 	pushswap->stack_b = init_stack(pushswap->stack_a->size);
 	sort(pushswap, 0, pushswap->stack_a->size);
 }

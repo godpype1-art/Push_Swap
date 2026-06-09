@@ -1,2 +1,7 @@
 *.o
 *.out
+*.a
+debug.c
+.gitignore
+.vscode
+push_swap

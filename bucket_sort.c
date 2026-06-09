@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 17:46:40 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:18:55 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	bucket_sort(t_pushswap *bench)
 {
 	int		bucket_count;
 
+	bench->algorithm = 2;
 	printf("\n==== begin sorting ====\n\n");
 	bench->stack_b = init_stack(bench->stack_a->size);
 	printf("\n======= StackB =======\n\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 17:57:37 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 20:11:46 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 	print_bench(bench);
 }
 
-/* receives the imput, reads flags and stores integers */
+/* receives the input, reads flags and stores integers */
 void	parser(int argc, char const *argv[])
 {
 	int	i;
@@ -148,8 +148,6 @@ void	parser(int argc, char const *argv[])
 			return (handle_error());
 		i++;
 	}
-	printf("bench->algorithm = %d\n", bench->algorithm);
-	printf("bench = %d\n", bench->bench);
 	create_stack(argc - i, &argv[i], bench);
 }
 
