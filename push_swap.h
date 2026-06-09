@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:48:30 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:45:09 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ typedef struct s_stack
 	int	allocated_size;
 }	t_stack;
 
-typedef struct T_PushSwap
+typedef struct s_pushswap
 {
-	t_stack *stackA;
-	t_stack *stackB;
+	t_stack *stack_a;
+	t_stack *stack_b;
+	int		bench;
+	float	disorder;
+	int		adaptive;
+	int		algorithm;
 	int		sa;
 	int		sb;
 	int		ss;
@@ -45,8 +49,8 @@ typedef struct T_PushSwap
 	int		rra;
 	int		rrb;
 	int		rrr;
-	int		total;
-}	PushSwap;
+	int		total_ops;
+}	t_pushswap;
 
 /*  stack functions */
 
@@ -67,37 +71,49 @@ void	handle_error(void);
 int		ft_atoi_safe(char *str, int *res);
 void	arrange(t_stack *stack, char *tmp, int *nb);
 void	convert(const char **argv, t_stack	*stack);
-void	create_stack(int argc, char const **argv, int function, int bench);
+void	create_stack(int argc, char const **argv, t_pushswap *bench);
 
 /*  adaptive sort functions */
 
-void	adaptive_algorythm(t_stack *stackA);
-float	disorder_check(t_stack *stackA);
+void	adaptive_algorithm(t_pushswap *pushswap);
+float	disorder_check(t_pushswap *bench);
 
 /*  insertion sort functions */
 
-void	insertion_sort(t_stack *stackA);
+void	insertion_sort(t_pushswap *pushswap);
 
 /*  bucket sort functions */
 
-void	bucket_sort(t_stack *stackA);
-void	normalize(t_stack *stackA);
+void	bucket_sort(t_pushswap *bench);
+void	normalize(t_pushswap *bench);
 int		ranking(t_stack *stackA, int i);
-int		buckets(t_stack *stackA, t_stack *stackB);
-void	push_buckets(t_stack *stackA, t_stack *stackB, int high, int low);
-void	sort_stack(t_stack *stackA, t_stack *stackB, int bucket_count);
+int		buckets(t_pushswap *bench);
+void	push_buckets(t_pushswap *bench, int high, int low);
+void	sort_stack(t_pushswap *bench, int bucket_count);
 int		highest_index(t_stack *stackB, int high, int low);
-void	push_highest(t_stack *stackA, t_stack *stackB, int limit);
+void	push_highest(t_pushswap *bench, int limit);
 
 /*  merge sort functions */
 
-void	merge(t_stack *stackA, t_stack *stackB, int lo, int mid, int hi);
-void 	merge_sorting(t_stack *stackA);
+void 	merge_sorting(t_pushswap *stackA);
 
 /*  other functions */
 
+void	print_bench(t_pushswap *bench);
 void	print_stack(t_stack *tsak);
 void	free_mem(char **array);
 void	handle_error(void);
+
+void pa(t_pushswap *pushswap);
+void pb(t_pushswap *pushswap);
+void sa(t_pushswap *pushswap);
+void sb(t_pushswap *pushswap);
+void ra(t_pushswap *pushswap);
+void rb(t_pushswap *pushswap);
+void rr(t_pushswap *pushswap);
+void rra(t_pushswap *pushswap);
+void rrb(t_pushswap *pushswap);
+void rrr(t_pushswap *pushswap);
+t_pushswap	*init_pushswap(int size);
 
 #endif

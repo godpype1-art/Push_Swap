@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:36:31 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:57:37 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,61 +98,59 @@ void	convert(const char **argv, t_stack	*stack)
 }
 
 /* creates the stack, reads redirects to algs depending on flags */
-void	create_stack(int argc, char const **argv, int function, int bench)
+void	create_stack(int argc, char const **argv, t_pushswap *bench)
 {
-	t_stack	*stack;
 	t_stack	*tmp;
 	
 	tmp = init_stack(argc);
-	stack = init_stack(argc);
 	convert(argv, tmp);
-	printf("\n==== tmp ====\n\n");
-	print_stack(tmp);
 	while (tmp->size)
-		push(stack, pop(tmp));
+		push(bench->stack_a, pop(tmp));
 	printf("\n==== stack ====\n\n");
-	print_stack(stack);
-	printf("\n==== bucket ====\n\n");
-	if (function == 0)
-		adaptive_algorythm(stack);
-	else if (function == 1)
-		insertion_sort(stack);
-	else if (function == 2)
-		bucket_sort(stack);
-	else if (function == 3)
-		merge_sorting(stack);
-	if (bench == 1)
-		printf("bench = 1\n");
+	print_stack(bench->stack_a);
+	bench->disorder = disorder_check(bench);
+	if (bench->adaptive == 1)
+		adaptive_algorithm(bench);
+	else if (bench->algorithm == 1)
+		insertion_sort(bench);
+	else if (bench->algorithm == 2)
+		bucket_sort(bench);
+	else if (bench->algorithm == 3)
+		merge_sorting(bench);
+	printf("\n==== sorted ====\n\n");
+	print_stack(bench->stack_a);
+	print_bench(bench);
 }
+
 /* receives the imput, reads flags and stores integers */
 void	parser(int argc, char const *argv[])
 {
 	int	i;
-	int	function;
-	int	bench;
+	t_pushswap	*bench;
 
+	bench = init_pushswap(argc);
+	if (bench == NULL)
+		return (handle_error());
 	i = 1;
-	function = 0;
-	bench = 0;
 	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
 	{
 		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
-			function = 1;
+			bench->algorithm = 1;
 		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)
-			function = 2;
+			bench->algorithm = 2;
 		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0)
-			function = 3;
+			bench->algorithm = 3;
 		else if (ft_strncmp(argv[i], "--adaptive", ft_strlen(argv[i])) == 0)
-			function = 0;
+			bench->adaptive = 1;
 		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0)
-			bench = 1;
+			bench->bench = 1;
 		else
 			return (handle_error());
 		i++;
 	}
-	printf("function = %d\n", function);
-	printf("bench = %d\n", bench);
-	create_stack(argc - i, &argv[i], function, bench);
+	printf("bench->algorithm = %d\n", bench->algorithm);
+	printf("bench = %d\n", bench->bench);
+	create_stack(argc - i, &argv[i], bench);
 }
 
 

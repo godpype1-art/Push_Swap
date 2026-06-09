@@ -3,57 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 18:08:13 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:46:40 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* pushes to stackB in bucket order, highest on top */
-void	push_buckets(t_stack *stackA, t_stack *stackB, int high, int low)
+void	push_buckets(t_pushswap *bench, int high, int low)
 {
 	int	rotations;
 
 	rotations = 0;
-	while (rotations < stackA->size)
+	while (rotations < bench->stack_a->size)
 	{
-		if (get(stackA, 0) >= low && get(stackA, 0) <= high)
+		if (get(bench->stack_a, 0) >= low && get(bench->stack_a, 0) <= high)
 		{
-			push(stackB, pop(stackA));
+			pb(bench);
 			rotations = 0;
-			printf("pb\n");
 		}
 		else
 		{
-			rotate(stackA);
-			printf("ra\n");
+			ra(bench);
 			rotations++;
 		}
 	}
 }
 
 /* organizes the stackA through buckets, highest on the bottom*/
-int	buckets(t_stack *stackA, t_stack *stackB)
+int	buckets(t_pushswap *bench)
 {
 	int	bucket_count;
 	int	current_bucket;
 	int	low;
 	int	high;
-	int	rotations;
 
-	bucket_count = (int)sqrt((double)stackA->size);
-	while (bucket_count * bucket_count < stackA->size)
+	bucket_count = (int)sqrt((double)bench->stack_a->size);
+	while (bucket_count * bucket_count < bench->stack_a->size)
 		bucket_count++;
 	current_bucket = 0;
 	while (current_bucket < bucket_count)
 	{
 		low = bucket_count * current_bucket;
 		high = low + bucket_count - 1;
-		rotations = 0;
-		push_buckets(stackA, stackB, high, low);
+		push_buckets(bench, high, low);
 		current_bucket++;
 	}
 	return (bucket_count);
@@ -77,51 +73,51 @@ int	ranking(t_stack *stackA, int i)
 }
 
 /* This function set the stack values to 0,...,n-1 */
-void	normalize(t_stack *stackA)
+void	normalize(t_pushswap *bench)
 {
 	int	*ranks;
 	int	rank;
 	int	i;
 
-	ranks = malloc(sizeof(int) * stackA->size);
+	ranks = malloc(sizeof(int) * bench->stack_a->size);
 	if (ranks == NULL)
 		return (handle_error());
 	i = 0;
-	while (i < stackA->size)
+	while (i < bench->stack_a->size)
 	{
-		rank = ranking(stackA, i);
+		rank = ranking(bench->stack_a, i);
 		ranks[i] = rank;
 		i++;
 	}
 	i = 0;
-	while (i < stackA->size)
+	while (i < bench->stack_a->size)
 	{
-		stackA->array[(stackA->start + i) % stackA->allocated_size] = ranks[i];
+		bench->stack_a->array[(bench->stack_a->start + i)
+			% bench->stack_a->allocated_size] = ranks[i];
 		i++;
 	}
 	free(ranks);
 }
 
 /* main unction of the sorting algorithm */
-void	bucket_sort(t_stack *stackA)
+void	bucket_sort(t_pushswap *bench)
 {
-	t_stack	*stackb;
 	int		bucket_count;
 
 	printf("\n==== begin sorting ====\n\n");
-	stackb = init_stack(stackA->size);
+	bench->stack_b = init_stack(bench->stack_a->size);
 	printf("\n======= StackB =======\n\n");
-	print_stack(stackb);
+	print_stack(bench->stack_b);
 	printf("\n===== Normalizing =====\n\n");
-	normalize(stackA);
-	print_stack(stackA);
+	normalize(bench);
+	print_stack(bench->stack_a);
 	printf("\n==== Pushing Buckets ====\n\n");
-	bucket_count = buckets(stackA, stackb);
-	print_stack(stackb);
+	bucket_count = buckets(bench);
+	print_stack(bench->stack_b);
 	printf("\n==== Pushing Sorted ====\n\n");
-	sort_stack(stackA, stackb, bucket_count);
-	print_stack(stackA);
+	sort_stack(bench, bucket_count);
+	print_stack(bench->stack_a);
 	printf("\n===== End Sorting =====\n\n");
-	free(stackb->array);
-	free(stackb);
+	free(bench->stack_b->array);
+	free(bench->stack_b);
 }

@@ -3,24 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 14:38:09 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:52:25 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, const char **argv)
 {
 	
 	/* t_stack	*stackA;
 	t_stack	*stackB;
 	int bucket_count; */
 
+	/*t_pushswap *pushswap;
+
+	//pushswap = init_pushswap(1);
+	print_bench(pushswap);*/
 	parser(argc, argv);
-	/* stackA = init_stack(9);
+/* 	stackA = init_stack(9);
 	stackB = init_stack(stackA->allocated_size);
 	push(stackA, 8);
 	push(stackA, 9);

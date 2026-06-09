@@ -3,32 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:06:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 18:09:04 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:46:55 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* pushes the hightest value and return the stack to original state */
-void	push_highest(t_stack *stackA, t_stack *stackB, int limit)
+void	push_highest(t_pushswap *bench, int limit)
 {
 	int	i;
 
 	i = limit;
 	while (limit > 0)
 	{
-		rotate(stackB);
-		printf("rb\n");
+		rb(bench);
 		limit--;
 	}
-	push(stackA, pop(stackB));
+	pa(bench);
 	while (limit < i)
 	{
-		reverse_rotate(stackB);
-		printf("rrb\n");
+		rrb(bench);
 		limit++;
 	}
 }
@@ -51,7 +49,7 @@ int	highest_index(t_stack *stackB, int high, int low)
 }
 
 /* sorts and pushes to stackA */
-void	sort_stack(t_stack *stackA, t_stack *stackB, int bucket_count)
+void	sort_stack(t_pushswap *bench, int bucket_count)
 {
 	int	current_bucket;
 	int	high;
@@ -64,10 +62,10 @@ void	sort_stack(t_stack *stackA, t_stack *stackB, int bucket_count)
 		limit = 0;
 		low = current_bucket * bucket_count;
 		high = low + bucket_count - 1;
-		while (stackB->size && get(stackB, 0) >= low)
+		while (bench->stack_b->size && get(bench->stack_b, 0) >= low)
 		{
-			limit = highest_index(stackB, high, low);
-			push_highest(stackA, stackB, limit);
+			limit = highest_index(bench->stack_b, high, low);
+			push_highest(bench, limit);
 		}
 	}
 }
