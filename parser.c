@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:43:46 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:12:14 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	convert(const char **argv, t_stack	*stack)
 	char	**array;
 	char	**tmp;
 	int		nb;
-	
+
 	while (*argv)
 	{
 		array = ft_split(*argv, ' ');
@@ -121,6 +121,7 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 			merge_sorting(bench);
 		if (bench->bench == 1)
 			print_bench(bench);
+		//print_stack(bench->stack_a);
 	}
 	
 }

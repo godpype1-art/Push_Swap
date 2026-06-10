@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/08 19:29:29 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:10:08 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void reallocate(t_stack *stack, int newsize)
 	int	indice;
 
 	indice = 0;
-	stack->allocated_size = newsize;
 	new = malloc(sizeof(int) * (newsize));
 	if (!new)
 		return ;
@@ -41,6 +40,7 @@ void reallocate(t_stack *stack, int newsize)
 	if (stack->array != NULL)
 		free(stack->array);
 	stack->array = new;
+	stack->allocated_size = newsize;
 	stack->start = 0;
 	stack->end = stack->size - 1;
 }

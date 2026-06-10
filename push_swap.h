@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 14:58:31 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:52:13 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	swap_first(t_stack *stack);
 
 /*  parser functions */
 
-void	parser(int argc, char const *argv[], t_pushswap *bench);
+void	parser(int argc, char const *argv[], t_pushswap);
 int		ft_is_valid(char *str);
 void	handle_error(void);
 int		ft_atoi_safe(char *str, int *res);

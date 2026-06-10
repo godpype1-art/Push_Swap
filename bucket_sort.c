@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:04:48 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:48:48 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 void	push_buckets(t_pushswap *bench, int high, int low)
 {
 	int	rotations;
+	int	size;
 
+	size = bench->stack_a->size;
 	rotations = 0;
-	while (rotations < bench->stack_a->size)
+	while (rotations < size)
 	{
 		if (get(bench->stack_a, 0) >= low && get(bench->stack_a, 0) <= high)
-		{
 			pb(bench);
-			rotations = 0;
-		}
 		else
 		{
 			ra(bench);
