@@ -23,20 +23,14 @@ int main()
 	int		yy;
 	int		where;
 
-	stackA = init_stack(10);
-	stackB = init_stack(10);
-	push(stackA, 11);
-	push(stackA, 10);
-	push(stackA, 3);
-	push(stackA, 22);
-	push(stackA, 31);
-	push(stackA, 30);
+	stackA = init_stack(1);
 	push(stackA, 4);
+	push(stackA, 3);
 	push(stackA, 2);
 	push(stackA, 1);
 	print_stack(stackA);
 
-	merge_sorting(stackA);
+	//merge_sorting(stackA);
 	//merge(stackA, stackB, 0, 3, 6);
-	print_stack(stackA);
+	//print_stack(stackA);
 }

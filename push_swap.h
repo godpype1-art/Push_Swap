@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 14:58:31 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 19:07:41 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ float	disorder_check(t_pushswap *bench);
 /*  insertion sort functions */
 
 void	insertion_sort(t_pushswap *pushswap);
+void	bubble_sort(t_pushswap *pushswap);
+void	radix_sort(t_pushswap *pushswap);
+int 	check_sort(t_stack *stack_a);
 
 /*  bucket sort functions */
 
