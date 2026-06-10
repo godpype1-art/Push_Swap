@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 19:18:55 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:04:48 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,10 @@ void	bucket_sort(t_pushswap *bench)
 	int		bucket_count;
 
 	bench->algorithm = 2;
-	printf("\n==== begin sorting ====\n\n");
 	bench->stack_b = init_stack(bench->stack_a->size);
-	printf("\n======= StackB =======\n\n");
-	print_stack(bench->stack_b);
-	printf("\n===== Normalizing =====\n\n");
 	normalize(bench);
-	print_stack(bench->stack_a);
-	printf("\n==== Pushing Buckets ====\n\n");
 	bucket_count = buckets(bench);
-	print_stack(bench->stack_b);
-	printf("\n==== Pushing Sorted ====\n\n");
 	sort_stack(bench, bucket_count);
-	print_stack(bench->stack_a);
-	printf("\n===== End Sorting =====\n\n");
 	free(bench->stack_b->array);
 	free(bench->stack_b);
 }

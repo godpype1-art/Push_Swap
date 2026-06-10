@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 20:11:46 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:43:46 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,63 +106,50 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 	convert(argv, tmp);
 	while (tmp->size)
 		push(bench->stack_a, pop(tmp));
-	printf("\n==== stack ====\n\n");
-	print_stack(bench->stack_a);
 	bench->disorder = disorder_check(bench);
-	if (bench->adaptive == 1)
-		adaptive_algorithm(bench);
-	else if (bench->algorithm == 1)
-		insertion_sort(bench);
-	else if (bench->algorithm == 2)
-		bucket_sort(bench);
-	else if (bench->algorithm == 3)
-		merge_sorting(bench);
-	printf("\n==== sorted ====\n\n");
-	print_stack(bench->stack_a);
-	print_bench(bench);
+	if (bench->disorder < 0.0001f)
+		print_bench(bench);
+	else
+	{
+		if (bench->adaptive == 1)
+			adaptive_algorithm(bench);
+		else if (bench->algorithm == 1)
+			insertion_sort(bench);
+		else if (bench->algorithm == 2)
+			bucket_sort(bench);
+		else if (bench->algorithm == 3)
+			merge_sorting(bench);
+		if (bench->bench == 1)
+			print_bench(bench);
+	}
+	
 }
 
 /* receives the input, reads flags and stores integers */
-void	parser(int argc, char const *argv[])
+void	parser(int argc, char const *argv[], t_pushswap *bench)
 {
 	int	i;
-	t_pushswap	*bench;
 
-	bench = init_pushswap(argc);
-	if (bench == NULL)
-		return (handle_error());
 	i = 1;
-	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
+	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0 && i <= 2)
 	{
-		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
-			bench->algorithm = 1;
-		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)
-			bench->algorithm = 2;
-		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0)
-			bench->algorithm = 3;
-		else if (ft_strncmp(argv[i], "--adaptive", ft_strlen(argv[i])) == 0)
+		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm + 1;
+		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm + 2;
+		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm +  3;
+		else if (ft_strncmp(argv[i], "--adaptive", ft_strlen(argv[i])) == 0 && bench->algorithm == 0)
 			bench->adaptive = 1;
-		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0)
+		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0 && bench->bench == 0)
 			bench->bench = 1;
 		else
 			return (handle_error());
 		i++;
 	}
+	if (bench->algorithm >= 4)
+		return (handle_error());
+	if (bench->algorithm == 0)
+		bench->adaptive = 1;
 	create_stack(argc - i, &argv[i], bench);
 }
-
-
-
-//#include <stdio.h>
-
-/* int main(void)
-{
-	int nb = 0;
-	char s1[] = "2147483648";
-	//char s2[] = "--medium";
-	parser(s1, &nb);
-	printf("Result = %d\n", parser(s1, &nb));
-	printf("Converted result = %d\n", nb);
-	
-	return 0;
-} */

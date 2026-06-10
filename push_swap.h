@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 17:45:09 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:58:31 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include <limits.h>
 
 //REMOVE LATER
 #include <stdio.h>
@@ -65,7 +66,7 @@ void	swap_first(t_stack *stack);
 
 /*  parser functions */
 
-void	parser(int argc, char const *argv[]);
+void	parser(int argc, char const *argv[], t_pushswap *bench);
 int		ft_is_valid(char *str);
 void	handle_error(void);
 int		ft_atoi_safe(char *str, int *res);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 16:52:17 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:38:56 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	adaptive_algorithm(t_pushswap *bench)
 	float	medium;
 	float	high;
 
-	printf("disorder = %f\n", bench->disorder);
 	medium = 0.2f;
 	high = 0.5f;
 	if (bench->disorder < 0.0001f)

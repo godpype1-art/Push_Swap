@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:22:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 20:11:23 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:44:19 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_bench(t_pushswap *bench)
 	int	whole;
 	int	decimal;
 	
-	fd = 2 - bench->bench;
+	fd = 2;
 	whole = (int)(bench->disorder * 100);
 	decimal = (int)(bench->disorder * 10000) % 100;
 	ft_putstr_fd("[bench] disorder: ", fd);
