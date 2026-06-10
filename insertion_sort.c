@@ -3,42 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/08 19:23:06 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:28:09 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void insertion_sort(t_stack *stackA)
+void insertion_sort(t_pushswap *pushswap)
 {
 	int	yy;
 	int	where;
 	
+	pushswap->algorithm = 1;
 	yy = 1;
-	while (yy < stackA->size)
+	while (yy < pushswap->stack_a->size)
 	{
 		where = yy;
-		while (get(stackA, 0) > get(stackA, 1) && where > 0)
+		while (get(pushswap->stack_a, 0) > get(pushswap->stack_a, 1) && where > 0)
 		{
-			swap_first(stackA);
-			ft_putstr_fd("sa\n", 1);
-			reverse_rotate(stackA);
-			ft_putstr_fd("rra\n", 1);
+			sa(pushswap);
+			rra(pushswap);
 			where--;
 		}
 		while (where < yy)
 		{
-			rotate(stackA);
-			ft_putstr_fd("rra\n", 1);
+			ra(pushswap);
 			where++;
 		}
 		yy++;
-		rotate(stackA);
-		ft_putstr_fd("rra\n", 1);
+		ra(pushswap);
 	}
-	rotate(stackA);
-	ft_putstr_fd("rra\n", 1);
+	ra(pushswap);
 }

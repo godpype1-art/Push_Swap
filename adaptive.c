@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/08 19:29:51 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:38:56 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* calculates disorder */
-float	disorder_check(t_stack *stackA)
+float	disorder_check(t_pushswap *bench)
 {
 	int	total_pairs;
 	int	mistakes;
@@ -22,17 +22,17 @@ float	disorder_check(t_stack *stackA)
 
 	i = 0;
 	j = 1;
-	if (stackA->size < 2)
+	if (bench->stack_a->size < 2)
 		return (0.0f);
 	mistakes = 0;
 	total_pairs = 0;
-	while (i < stackA->size)
+	while (i < bench->stack_a->size)
 	{
 		j = i + 1;
-		while (j < stackA->size)
+		while (j < bench->stack_a->size)
 		{
 			total_pairs += 1;
-			if (get(stackA, i) > get(stackA, j))
+			if (get(bench->stack_a, i) > get(bench->stack_a, j))
 				mistakes += 1;
 			j++;
 		}
@@ -42,25 +42,22 @@ float	disorder_check(t_stack *stackA)
 }
 
 /* checks disorder and guides to algorythm */
-void	adaptive_algorythm(t_stack *stackA)
+void	adaptive_algorithm(t_pushswap *bench)
 {
-	float	disorder;
 	float	medium;
 	float	high;
 
-	disorder = disorder_check(stackA);
-	printf("disorder = %f\n", disorder);
 	medium = 0.2f;
 	high = 0.5f;
-	if (disorder < 0.0001f)
+	if (bench->disorder < 0.0001f)
 	{
 		printf("sorted\n");
 		return ;
 	}
-	else if (disorder < medium)
-		insertion_sort(stackA);
-	else if (disorder < high)
-		bucket_sort(stackA);
+	else if (bench->disorder < medium)
+		insertion_sort(bench);
+	else if (bench->disorder < high)
+		bucket_sort(bench);
 	else
-		merge_sorting(stackA);
+		merge_sorting(bench);
 }
