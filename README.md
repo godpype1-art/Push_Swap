@@ -26,6 +26,9 @@ The project introduces several new concepts, including:
 
 The intent behind this project is, not only to introduce the concept of sorting algorithms, but also to teach how to work as a team, and working on a larger scaled project.
 
+The parser, adaptive algorithm, the medium aglorithm and bench management were made by falves-e.
+The stack implementation, simple and medium aglorithms were made by afranco-.
+
 ---
 
 ## How It Works
