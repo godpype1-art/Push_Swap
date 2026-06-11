@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 14:59:07 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:11:56 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	swap_first(t_stack *stack);
 
 /*  parser functions */
 
-void	parser(int argc, char const *argv[], t_pushswap);
+void	parser(int argc, char const *argv[], t_pushswap *bench);
 int		ft_is_valid(char *str);
 void	handle_error(void);
 int		ft_atoi_safe(char *str, int *res);
@@ -82,6 +82,9 @@ float	disorder_check(t_pushswap *bench);
 /*  insertion sort functions */
 
 void	insertion_sort(t_pushswap *pushswap);
+void	bubble_sort(t_pushswap *pushswap);
+void	radix_sort(t_pushswap *pushswap);
+int 	check_sort(t_stack *stack_a);
 
 /*  bucket sort functions */
 
