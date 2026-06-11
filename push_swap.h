@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 17:52:13 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:59:07 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ void	normalize(t_pushswap *bench);
 int		ranking(t_stack *stackA, int i);
 int		buckets(t_pushswap *bench);
 void	push_buckets(t_pushswap *bench, int high, int low);
-void	sort_stack(t_pushswap *bench, int bucket_count);
-int		highest_index(t_stack *stackB, int high, int low);
-void	push_highest(t_pushswap *bench, int limit);
+void	sort_stack(t_pushswap *bench);
+void	push_highest(t_pushswap *bench, int highest);
 
 /*  merge sort functions */
 
