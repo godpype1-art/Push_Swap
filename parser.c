@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 19:08:04 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 18:27:23 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 		if (bench->adaptive == 1)
 			adaptive_algorithm(bench);
 		else if (bench->algorithm == 1)
-			bubble_sort(bench);
+			insertion_sort(bench);
 		else if (bench->algorithm == 2)
 			bucket_sort(bench);
 		else if (bench->algorithm == 3)

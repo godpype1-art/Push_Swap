@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 19:44:40 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/09 17:50:51 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:31:30 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ t_pushswap	*init_pushswap(int size)
 	if (bench == NULL)
 		return (NULL);
 	bench->stack_a = init_stack(size);
+	bench->stack_b = NULL;
 	bench->bench = 0;
 	bench->disorder = 0.0f;
 	bench->adaptive = 0;
@@ -117,4 +118,12 @@ t_pushswap	*init_pushswap(int size)
 	bench->rrb = 0;
 	bench->rrr = 0;
 	return (bench);
+}
+
+void free_pushswap(t_pushswap *pushswap)
+{
+	free_stack(pushswap->stack_a);
+	if (pushswap->stack_b)
+		free_stack(pushswap->stack_b);
+	free(pushswap);
 }

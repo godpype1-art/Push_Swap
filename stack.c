@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/10 17:08:36 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:29:05 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,10 @@ void swap_first(t_stack *stack)
 	value2 = pop(stack);
 	push(stack, value1);
 	push(stack, value2);
+}
+
+void free_stack(t_stack *stack)
+{
+	free(stack->arrange);
+	free(stack);
 }
