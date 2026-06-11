@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 19:44:14 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:27:14 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_three(t_pushswap *pushswap)
+void	sort_three(t_pushswap *pushswap)
 {
-	if (get(pushswap->stack_a, 0) < get(pushswap->stack_a, 1) && get(pushswap->stack_a, 1) < get(pushswap->stack_a, 2))
-		return;
+	if (get(pushswap->stack_a, 0) < get(pushswap->stack_a, 1)
+		&& get(pushswap->stack_a, 1) < get(pushswap->stack_a, 2))
+		return ;
 	if (get(pushswap->stack_a, 0) > get(pushswap->stack_a, 1))
 		sa(pushswap);
-	if (get(pushswap->stack_a, 0) < get(pushswap->stack_a, 1) && get(pushswap->stack_a, 1) < get(pushswap->stack_a, 2))
-		return;
+	if (get(pushswap->stack_a, 0) < get(pushswap->stack_a, 1)
+		&& get(pushswap->stack_a, 1) < get(pushswap->stack_a, 2))
+		return ;
 	if (get(pushswap->stack_a, 0) > get(pushswap->stack_a, 2))
 		ra(pushswap);
 	else
@@ -27,7 +29,7 @@ void sort_three(t_pushswap *pushswap)
 	sort_three(pushswap);
 }
 
-void put_on_indice(t_pushswap *pushswap, int indice)
+void	put_on_indice(t_pushswap *pushswap, int indice)
 {
 	int	ss;
 
@@ -53,9 +55,9 @@ void put_on_indice(t_pushswap *pushswap, int indice)
 	}
 }
 
-void put_number(t_pushswap *pushswap)
+void	put_number(t_pushswap *pushswap)
 {
-	int a;
+	int	a;
 	int	i;
 
 	a = get(pushswap->stack_a, 0);
@@ -65,19 +67,19 @@ void put_number(t_pushswap *pushswap)
 		if (a < get(pushswap->stack_b, i))
 			i++;
 		else
-			break;
+			break ;
 	}
 	put_on_indice(pushswap, i);
 }
 
-void selection_sort(t_pushswap *pushswap)
+void	selection_sort(t_pushswap *pushswap)
 {
 	int	yy;
-	
+
 	if (pushswap->stack_a->size == 3)
 	{
 		sort_three(pushswap);
-		return;
+		return ;
 	}
 	pushswap->algorithm = 1;
 	yy = 1;

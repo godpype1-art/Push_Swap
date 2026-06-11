@@ -6,15 +6,15 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 19:48:41 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 20:17:02 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:28:00 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int pop(t_stack *stack)
+int	pop(t_stack *stack)
 {
-	int value;
+	int	value;
 
 	value = get(stack, 0);
 	stack->start = moduler_remainder(stack->start + 1, stack->allocated_size);
@@ -22,9 +22,9 @@ int pop(t_stack *stack)
 	return (value);
 }
 
-void reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
-	int value;
+	int	value;
 
 	value = get(stack, stack->size - 1);
 	stack->start = moduler_remainder(stack->start - 1, stack->allocated_size);
@@ -32,9 +32,9 @@ void reverse_rotate(t_stack *stack)
 	stack->end = moduler_remainder(stack->end - 1, stack->allocated_size);
 }
 
-void rotate(t_stack *stack)
+void	rotate(t_stack *stack)
 {
-	int value;
+	int	value;
 
 	value = get(stack, 0);
 	stack->end = moduler_remainder(stack->end + 1, stack->allocated_size);
@@ -42,9 +42,9 @@ void rotate(t_stack *stack)
 	stack->start = moduler_remainder(stack->start + 1, stack->allocated_size);
 }
 
-void swap_first(t_stack *stack)
+void	swap_first(t_stack *stack)
 {
-	int value1;
+	int	value1;
 	int	value2;
 
 	value1 = pop(stack);
@@ -53,7 +53,7 @@ void swap_first(t_stack *stack)
 	push(stack, value2);
 }
 
-void free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
 	if (stack->array)
 		free(stack->array);

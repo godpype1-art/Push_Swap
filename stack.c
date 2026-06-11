@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 19:49:50 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:25:46 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 int	get(t_stack	*stack, int index)
 {
-	//printf("indice:%d, get:%d, start:%d, end:%d\n", indice, (stack->start + indice) % stack->allocated_size, stack->start, stack->end);
 	return (stack->array[(stack->start + index) % stack->allocated_size]);
 }
 
-int moduler_remainder(int a, int b)
+int	moduler_remainder(int a, int b)
 {
 	return (((a % b) + b) % b);
 }
 
-void reallocate(t_stack *stack, int newsize)
+void	reallocate(t_stack *stack, int newsize)
 {
 	int	*new;
 	int	indice;
@@ -56,7 +55,7 @@ t_stack	*init_stack(int size)
 	return (stack);
 }
 
-void push(t_stack *stack, int value)
+void	push(t_stack *stack, int value)
 {
 	stack->start = moduler_remainder(stack->start - 1, stack->allocated_size);
 	stack->array[stack->start] = value;
@@ -64,5 +63,3 @@ void push(t_stack *stack, int value)
 	if (stack->size == stack->allocated_size)
 		reallocate(stack, stack->allocated_size * 2);
 }
-
-

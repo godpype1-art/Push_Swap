@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:19:15 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:43:30 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@
 		printf("%d\n", get(tsak, i++));
 	printf("%s\n", "end");
 }*/
-
-int	ft_is_valid(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	if (str[i] && (str[i] == '+' || str[i] == '-'))
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 /* arrange every arg through atoi */
 void	arrange(t_stack *stack, char *tmp, int *nb)
@@ -74,6 +54,7 @@ void	convert(const char **argv, t_stack	*stack)
 	char	**tmp;
 	int		nb;
 
+	nb = 0;
 	while (*argv)
 	{
 		array = ft_split(*argv, ' ');
@@ -121,6 +102,7 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 		if (bench->bench == 1)
 			print_bench(bench);
 	}
+	free_stack(tmp);
 }
 
 void	read_flags(char const *argv[], t_pushswap *bench, int *i)
@@ -135,7 +117,7 @@ void	read_flags(char const *argv[], t_pushswap *bench, int *i)
 			bench->algorithm = 4 * bench->algorithm + 2;
 		else if (ft_strncmp(argv[*i], "--complex", ft_strlen(argv[*i])) == 0
 			&& bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm +  3;
+			bench->algorithm = 4 * bench->algorithm + 3;
 		else if (ft_strncmp(argv[*i], "--adaptive", ft_strlen(argv[*i])) == 0
 			&& bench->algorithm == 0)
 			bench->adaptive = 1;
@@ -147,6 +129,7 @@ void	read_flags(char const *argv[], t_pushswap *bench, int *i)
 		(*i)++;
 	}
 }
+
 /* receives the input, reads flags and stores integers */
 void	parser(int argc, char const *argv[], t_pushswap *bench)
 {
@@ -154,22 +137,6 @@ void	parser(int argc, char const *argv[], t_pushswap *bench)
 
 	i = 1;
 	read_flags(argv, bench, &i);
-	/*while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0 && i <= 2)
-	{
-		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm + 1;
-		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm + 2;
-		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm +  3;
-		else if (ft_strncmp(argv[i], "--adaptive", ft_strlen(argv[i])) == 0 && bench->algorithm == 0)
-			bench->adaptive = 1;
-		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0 && bench->bench == 0)
-			bench->bench = 1;
-		else
-			return (handle_error());
-		i++;
-	}*/
 	if (bench->algorithm >= 4)
 		return (handle_error());
 	if (bench->algorithm == 0)

@@ -6,15 +6,14 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:13:55 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:29:37 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, const char **argv)
+int	main(int argc, const char **argv)
 {
-	
 	t_pushswap	*bench;
 
 	if (argc < 2)

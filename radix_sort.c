@@ -6,41 +6,41 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 18:07:15 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 19:43:48 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:24:52 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_sort(t_stack *stack_a)
+int	check_sort(t_stack *stack_a)
 {
 	int	i;
 
 	i = 1;
 	while (i < stack_a->size)
 	{
-		if(get(stack_a, i - 1) > get(stack_a, i))
-			return 1;
+		if (get(stack_a, i - 1) > get(stack_a, i))
+			return (1);
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
-int check_sort_dim(t_stack *stack_a, int dim)
+int	check_sort_dim(t_stack *stack_a, int dim)
 {
 	int	i;
 
 	i = 1;
 	while (i < stack_a->size)
 	{
-		if((get(stack_a, i - 1) >> dim) % 2 > (get(stack_a, i) >> dim) % 2)
-			return 0;
+		if ((get(stack_a, i - 1) >> dim) % 2 > (get(stack_a, i) >> dim) % 2)
+			return (0);
 		i++;
 	}
-	return 1;
+	return (1);
 }
 
-void radix_sort_dim(t_pushswap *pushswap, int dim)
+void	radix_sort_dim(t_pushswap *pushswap, int dim)
 {
 	int	yy;
 	int	size;
@@ -57,12 +57,11 @@ void radix_sort_dim(t_pushswap *pushswap, int dim)
 	}
 	while (pushswap->stack_b->size)
 		pa(pushswap);
-	//print_stack(pushswap->stack_a);
 }
 
-void radix_sort(t_pushswap *pushswap)
+void	radix_sort(t_pushswap *pushswap)
 {
-	int dim;
+	int	dim;
 
 	dim = 0;
 	pushswap->algorithm = 3;
@@ -72,7 +71,7 @@ void radix_sort(t_pushswap *pushswap)
 		if (check_sort_dim(pushswap->stack_a, dim))
 		{
 			dim++;
-			continue;
+			continue ;
 		}
 		radix_sort_dim(pushswap, dim);
 		dim++;

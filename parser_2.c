@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:42 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:00:24 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:22:10 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ int	ft_atoi_safe(char *str, int *res)
 		if (sign == -1 && (*res < (INT_MIN - ((str[i] - '0') * sign)) / 10))
 			return (0);
 		*res = (*res * 10) + ((str[i] - '0') * sign);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_is_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	if (str[i] && (str[i] == '+' || str[i] == '-'))
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
 		i++;
 	}
 	return (1);

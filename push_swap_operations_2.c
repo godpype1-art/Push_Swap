@@ -6,13 +6,13 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 19:50:41 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 20:15:14 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:28:51 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rra(t_pushswap *pushswap)
+void	rra(t_pushswap *pushswap)
 {
 	ft_putstr_fd("rra\n", 1);
 	reverse_rotate(pushswap->stack_a);
@@ -20,14 +20,15 @@ void rra(t_pushswap *pushswap)
 	pushswap->total_ops++;
 }
 
-void rrb(t_pushswap *pushswap)
+void	rrb(t_pushswap *pushswap)
 {
 	ft_putstr_fd("rrb\n", 1);
 	reverse_rotate(pushswap->stack_b);
 	pushswap->rrb++;
 	pushswap->total_ops++;
 }
-void rrr(t_pushswap *pushswap)
+
+void	rrr(t_pushswap *pushswap)
 {
 	ft_putstr_fd("rrr\n", 1);
 	reverse_rotate(pushswap->stack_a);
@@ -39,7 +40,7 @@ void rrr(t_pushswap *pushswap)
 t_pushswap	*init_pushswap(int size)
 {
 	t_pushswap	*bench;
-	
+
 	bench = malloc(sizeof(t_pushswap));
 	if (bench == NULL)
 		return (NULL);
@@ -64,7 +65,7 @@ t_pushswap	*init_pushswap(int size)
 	return (bench);
 }
 
-void free_pushswap(t_pushswap *pushswap)
+void	free_pushswap(t_pushswap *pushswap)
 {
 	free_stack(pushswap->stack_a);
 	if (pushswap->stack_b)
