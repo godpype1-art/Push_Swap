@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 19:32:45 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:44:14 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void put_number(t_pushswap *pushswap)
 	put_on_indice(pushswap, i);
 }
 
-void insertion_sort(t_pushswap *pushswap)
+void selection_sort(t_pushswap *pushswap)
 {
 	int	yy;
 	

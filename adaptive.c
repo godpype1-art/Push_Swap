@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 18:27:09 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:07:22 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	adaptive_algorithm(t_pushswap *bench)
 		return ;
 	}
 	else if (bench->disorder < medium)
-		insertion_sort(bench);
+		selection_sort(bench);
 	else if (bench->disorder < high)
 		bucket_sort(bench);
 	else

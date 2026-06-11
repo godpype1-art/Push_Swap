@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:22:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:44:19 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:58:51 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_bench(t_pushswap *bench)
 	int	fd;
 	int	whole;
 	int	decimal;
-	
+
 	fd = 2;
 	whole = (int)(bench->disorder * 100);
 	decimal = (int)(bench->disorder * 10000) % 100;

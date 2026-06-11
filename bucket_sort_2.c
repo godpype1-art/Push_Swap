@@ -6,66 +6,48 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:06:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/09 17:46:55 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:59:57 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* pushes the hightest value and return the stack to original state */
-void	push_highest(t_pushswap *bench, int limit)
+void	push_highest(t_pushswap *bench, int highest)
 {
-	int	i;
-
-	i = limit;
-	while (limit > 0)
+	if (highest <= bench->stack_b->size / 2)
 	{
-		rb(bench);
-		limit--;
-	}
-	pa(bench);
-	while (limit < i)
-	{
-		rrb(bench);
-		limit++;
-	}
-}
-
-/* calculates the index inside the bucket of the highest value */
-int	highest_index(t_stack *stackB, int high, int low)
-{
-	int	i;
-	int	limit;
-
-	limit = 0;
-	i = 0;
-	while (i <= high - low && get(stackB, i) >= low)
-	{
-		if (get(stackB, i) >= get(stackB, limit))
-			limit = i;
-		i++;
-	}
-	return (limit);
-}
-
-/* sorts and pushes to stackA */
-void	sort_stack(t_pushswap *bench, int bucket_count)
-{
-	int	current_bucket;
-	int	high;
-	int	low;
-	int	limit;
-
-	current_bucket = bucket_count - 1;
-	while (current_bucket-- >= 0)
-	{
-		limit = 0;
-		low = current_bucket * bucket_count;
-		high = low + bucket_count - 1;
-		while (bench->stack_b->size && get(bench->stack_b, 0) >= low)
+		while (highest > 0)
 		{
-			limit = highest_index(bench->stack_b, high, low);
-			push_highest(bench, limit);
+			rb(bench);
+			highest--;
 		}
 	}
+	else
+	{
+		while (highest < bench->stack_b->size)
+		{
+			rrb(bench);
+			highest++;
+		}
+	}
+	pa(bench);
+}
+
+void	sort_stack(t_pushswap *bench)
+{
+	int	i;
+	int	highest;
+
+	i = 0;
+	highest = 0;
+	if (bench->stack_b->size == 0)
+		return ;
+	while (bench->stack_b->size && i < bench->stack_b->size)
+	{
+		if (get(bench->stack_b, i) >= get(bench->stack_b, highest))
+			highest = i;
+		i++;
+	}
+	push_highest(bench, highest);
+	sort_stack(bench);
 }

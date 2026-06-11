@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_operations.c                             :+:      :+:    :+:   */
+/*   push_swap_operations_3.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/08 19:44:40 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 19:58:15 by afranco-         ###   ########.fr       */
+/*   Created: 2026/06/11 19:51:39 by afranco-          #+#    #+#             */
+/*   Updated: 2026/06/11 19:51:58 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_pushswap *pushswap)
+void ra(t_pushswap *pushswap)
 {
-	ft_putstr_fd("pa\n", 1);
-	push(pushswap->stack_a, pop(pushswap->stack_b));
-	pushswap->pa++;
+	ft_putstr_fd("ra\n", 1);
+	rotate(pushswap->stack_a);
+	pushswap->ra++;
 	pushswap->total_ops++;
 }
 
-void	pb(t_pushswap *pushswap)
+void rb(t_pushswap *pushswap)
 {
-	ft_putstr_fd("pb\n", 1);
-	push(pushswap->stack_b, pop(pushswap->stack_a));
-	pushswap->pb++;
+	ft_putstr_fd("rb\n", 1);
+	rotate(pushswap->stack_b);
+	pushswap->rb++;
 	pushswap->total_ops++;
 }
-
-void	sa(t_pushswap *pushswap)
+void rr(t_pushswap *pushswap)
 {
-	ft_putstr_fd("sa\n", 1);
-	swap_first(pushswap->stack_a);
-	pushswap->sa++;
-	pushswap->total_ops++;
-}
-
-void	sb(t_pushswap *pushswap)
-{
-	ft_putstr_fd("sb\n", 1);
-	swap_first(pushswap->stack_b);
-	pushswap->sa++;
+	ft_putstr_fd("ra\n", 1);
+	rotate(pushswap->stack_a);
+	rotate(pushswap->stack_b);
+	pushswap->rr++;
 	pushswap->total_ops++;
 }

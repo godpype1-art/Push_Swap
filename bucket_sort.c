@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:04:48 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:17:38 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 void	push_buckets(t_pushswap *bench, int high, int low)
 {
 	int	rotations;
+	int	size;
 
+	size = bench->stack_a->size;
 	rotations = 0;
-	while (rotations < bench->stack_a->size)
+	while (bench->stack_a->size && rotations < size)
 	{
 		if (get(bench->stack_a, 0) >= low && get(bench->stack_a, 0) <= high)
-		{
 			pb(bench);
-			rotations = 0;
-		}
 		else
 		{
 			ra(bench);
@@ -45,7 +44,7 @@ int	buckets(t_pushswap *bench)
 	while (bucket_count * bucket_count < bench->stack_a->size)
 		bucket_count++;
 	current_bucket = 0;
-	while (current_bucket < bucket_count)
+	while (bench->stack_a->size && current_bucket < bucket_count)
 	{
 		low = bucket_count * current_bucket;
 		high = low + bucket_count - 1;
@@ -108,7 +107,5 @@ void	bucket_sort(t_pushswap *bench)
 	bench->stack_b = init_stack(bench->stack_a->size);
 	normalize(bench);
 	bucket_count = buckets(bench);
-	sort_stack(bench, bucket_count);
-	free(bench->stack_b->array);
-	free(bench->stack_b);
+	sort_stack(bench);
 }

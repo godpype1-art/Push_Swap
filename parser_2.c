@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:42 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 14:56:53 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:00:24 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 /* standar error issue */
 void	handle_error(void)
 {
-	printf("Error == TU ÉS GAY\n");
+	ft_putstr_fd("Error\n", 2);
 }
 
 void	free_mem(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -30,10 +30,11 @@ void	free_mem(char **array)
 	}
 	free(array);
 }
+
 int	ft_atoi_safe(char *str, int *res)
 {
 	int	i;
-	int sign;
+	int	sign;
 
 	i = 0;
 	sign = 1;
@@ -43,7 +44,7 @@ int	ft_atoi_safe(char *str, int *res)
 	{
 		if (str[i] == '-')
 			sign = -1;
-		i++;	
+		i++;
 	}
 	while (str[i] != '\0')
 	{

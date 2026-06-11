@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:23:49 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:13:55 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int main(int argc, const char **argv)
 		handle_error();
 	else
 		parser(argc, argv, bench);
+	free_pushswap(bench);
 	return (0);
 }
