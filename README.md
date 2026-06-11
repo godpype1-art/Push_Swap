@@ -9,10 +9,8 @@ This project revolves around sorting an arbitrary number of integers.
 ## Table of Contents
 
 - [Description](#description)
-- [Prototype](#prototype)
 - [How It Works](#how-it-works)
 - [Instructions](#instructions)
-- [Challenges](#challenges)
 - [Resources](#resources)
 
 ---
