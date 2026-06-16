@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 16:03:39 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:29:40 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ void	push_buckets(t_pushswap *bench, int high, int low)
 		}
 	}
 }
+/* calculates the square root of stack size */
+int	square_root(t_pushswap *bench)
+{
+	int nb;
+	
+	nb = 1;
+	while (nb * nb < bench->stack_a->size)
+		nb++;
+	return (nb);
+}
 
 /* organizes the stackA through buckets, highest on the bottom*/
 int	buckets(t_pushswap *bench)
@@ -40,9 +50,7 @@ int	buckets(t_pushswap *bench)
 	int	low;
 	int	high;
 
-	bucket_count = (int)sqrt((double)bench->stack_a->size);
-	while (bucket_count * bucket_count < bench->stack_a->size)
-		bucket_count++;
+	bucket_count = square_root(bench);
 	current_bucket = 0;
 	while (bench->stack_a->size && current_bucket < bucket_count)
 	{
