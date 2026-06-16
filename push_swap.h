@@ -6,17 +6,17 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:49:07 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:04:18 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
+# include "libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -92,20 +92,19 @@ void		push_highest(t_pushswap *bench, int highest);
 
 /*  other functions */
 
-void	print_bench(t_pushswap *bench);
-void	free_pushswap(t_pushswap *pushswap);
-void	handle_error(void);
-
-void pa(t_pushswap *pushswap);
-void pb(t_pushswap *pushswap);
-void sa(t_pushswap *pushswap);
-void sb(t_pushswap *pushswap);
-void ra(t_pushswap *pushswap);
-void rb(t_pushswap *pushswap);
-void rr(t_pushswap *pushswap);
-void rra(t_pushswap *pushswap);
-void rrb(t_pushswap *pushswap);
-void rrr(t_pushswap *pushswap);
+void		print_bench(t_pushswap *bench);
+void		free_pushswap(t_pushswap *pushswap);
+void		handle_error(void);
+void		pa(t_pushswap *pushswap);
+void		pb(t_pushswap *pushswap);
+void		sa(t_pushswap *pushswap);
+void		sb(t_pushswap *pushswap);
+void		ra(t_pushswap *pushswap);
+void		rb(t_pushswap *pushswap);
+void		rr(t_pushswap *pushswap);
+void		rra(t_pushswap *pushswap);
+void		rrb(t_pushswap *pushswap);
+void		rrr(t_pushswap *pushswap);
 t_pushswap	*init_pushswap(int size);
 
 #endif

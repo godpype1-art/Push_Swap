@@ -6,36 +6,17 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:47:40 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:05:11 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* pushes to stackB in bucket order, highest on top */
-void	push_buckets(t_pushswap *bench, int high, int low)
-{
-	int	rotations;
-	int	size;
-
-	size = bench->stack_a->size;
-	rotations = 0;
-	while (bench->stack_a->size && rotations < size)
-	{
-		if (get(bench->stack_a, 0) >= low && get(bench->stack_a, 0) <= high)
-			pb(bench);
-		else
-		{
-			ra(bench);
-			rotations++;
-		}
-	}
-}
 /* calculates the square root of stack size */
 int	square_root(t_pushswap *bench)
 {
-	int nb;
-	
+	int	nb;
+
 	nb = 1;
 	while (nb * nb < bench->stack_a->size)
 		nb++;

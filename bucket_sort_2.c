@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:06:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 19:59:57 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:04:50 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* pushes to stackB in bucket order, highest on top */
+void	push_buckets(t_pushswap *bench, int high, int low)
+{
+	int	rotations;
+	int	size;
+
+	size = bench->stack_a->size;
+	rotations = 0;
+	while (bench->stack_a->size && rotations < size)
+	{
+		if (get(bench->stack_a, 0) >= low && get(bench->stack_a, 0) <= high)
+			pb(bench);
+		else
+		{
+			ra(bench);
+			rotations++;
+		}
+	}
+}
 
 void	push_highest(t_pushswap *bench, int highest)
 {
