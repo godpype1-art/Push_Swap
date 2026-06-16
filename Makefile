@@ -13,7 +13,9 @@ SRCS = main.c \
 	bucket_sort_2.c \
 	merge_sort.c \
 	bench.c \
-	push_swap_operations.c 
+	push_swap_operations.c \
+	bubble_sort.c \
+	radix_sort.c
 
 OBJ = $(SRCS:.c=.o)
 

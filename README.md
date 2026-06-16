@@ -1,115 +1,198 @@
-*This project has been created as part of the 42 curriculum by falves-e, afranco-.*
+*This activity has been created as part of the 42 curriculum by falves-e, afranco-.*
 
 # Push_swap
 
-<Short one-line explanation of the project.>
+This project revolves around sorting an arbitrary number of integers.
 
 ---
 
 ## Table of Contents
 
 - [Description](#description)
-- [Prototype](#prototype)
 - [How It Works](#how-it-works)
 - [Instructions](#instructions)
-- [Challenges](#challenges)
 - [Resources](#resources)
 
 ---
 
 ## Description
 
-<Explain the goal of the project and what it teaches.>
+The project introduces several new concepts, including:
 
-The project introduces several important concepts in C programming, including:
+- Stack data structure
+- Sorting algorithms
+- Team work
+- Bigger Project scale
 
-- <concept_1>
-- <concept_2>
-- <concept_3>
-- <concept_4>
-- <concept_5>
+The intent behind this project is, not only to introduce the concept of sorting algorithms, but also to teach how to work as a team, and working on a larger scaled project.
 
-<Explain what the project accomplishes from a technical perspective.>
-
----
-
-## Prototype
-
-```c
-<function prototype>
-````
+The parser, adaptive algorithm, the medium aglorithm and bench management were made by falves-e.
+The stack implementation, simple and medium aglorithms were made by afranco-.
 
 ---
 
 ## How It Works
 
-<Explain the implementation approach clearly and simply.>
+The program reads the input and checks if there are any flags that will affect the behaviour program. Then reads every argument given in search for any conflict. If it passes, it will proceed to one of the agorithms implemented.
+
+Each of the algorithms implemented are optimized towards the level of disorder. The performance may be afected if forcefully used.
 
 The implementation follows these steps:
 
-1. <step_1>
-2. <step_2>
-3. <step_3>
-4. <step_4>
-5. <step_5>
+1. Custom adapted parser
+2. Disorder check
+3. Algorithm that adapts to disorder measured 
+4. Prints operations made
 
-<Optional closing explanation about efficiency, behavior, or architecture.>
 
 ---
+
+Those algorythms are, from small level of disorder to highest level of disorder:
+
+### Selection Sort
+
+This algorithm iterates through the stack and pushes to another stack reverse ordered. Then, pushes all the elements back.
+
+---
+
+### Bucket Sort
+
+This algorithm divide the stack into √n buckets, and push them to another stack, still disordered. Then pushes back to the initial stack, ordered.
+
+---
+
+### Radix Sort
+
+This algorythm checks the last bit of every integer, them pushes, reverse sorted, to another stack. Then, pushes all the elements into the original stack.
+
+---
+## Adaptive Strategy
+
+The adaptive mode measures the disorder of the input by computing the ratio of inversions to total optional pairs.
+
+- Low disorder → Selection Sort
+- Medium disorder → Bucket Sort
+- High disorder → Radix Sort
+
+This allows the program to select the most suitable algorithm automatically.
+
+---
+
+### Operations
+
+| NAME | WHAT IT DOES 												|
+|------|------------------------------------------------------------|
+| `sa` | swaps the first 2 elements of stack_a						|
+| `sb` | swaps the first 2 elements of stack_b						|
+| `ss` | swaps the first 2 elements of both stacks					|
+| `pa` | pushed the first element of stack_b to the top of stack_a	|
+| `pb` | pushed the first element of stack_a to the top of stack_b	|
+| `ra` | rotates the first element of the stack_a to the bottom		|
+| `rb` | rotates the first element of the stack_b to the bottom		|
+| `rr` | rotates the first element of each stack to the bottom		|
+| `rra`| rotates the last element of the stack_a to the top			|
+| `rrb`| rotates the last element of the stack_b to the top			|
+| `rrr`| rotates the last element of each stack to the top			|
+
+---
+
 
 ## Instructions
 
 Compile with:
 
 ```bash
-<compilation command>
+make # creates the program at the root
 ```
 
+inside the folder
+
+### More Makefile comands
+
+```bash
+make clean	# removes *.o files
+make fclean	# removes the program
+make re		# runs fclean and rebuilds the project
+```
+Execute the program with the format:
+
+```bash
+./push_swap --<optional-flag-1> --<optional-flag-2> <arguments>
+```
+
+### Optional Flags
+```bash
+--simple	# forces simple algorithm
+--medium	# forces medium algorithm
+--complex	# forces complex algorithm
+--adaptive	# forces adaptive algorithm
+--bench		# prints benchmark to stderr containning operations
+```
 Example usage:
 
-```c
-<example usage code>
+```bash
+./push_swap --bench --medium 1 3 6 90 3298 -134 -33 -4
+```
+
+Output
+```bash
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+pb
+pb
+rb
+pa
+rrb
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+[bench] disorder: 53.57%
+[bench] strategy: Medium / O(n√n)
+[bench] total_ops: 31
+[bench] sa: 0 sb: 0 ss: 0 pa: 8 pb: 8
+[bench] ra: 13 rb: 1 rr: 0 rra: 0 rrb: 1 rrr: 0
 ```
 
 > [!IMPORTANT]
-> <Important note or warning about compilation, execution, or project behavior.>
+> If no flag is used, the default behaviour of the program is `--adaptive`
 
 ---
 
-## Challenges
-
-<Explain the biggest technical challenge faced during development.>
-
-Handling edge cases such as:
-
-* <edge_case_1>
-* <edge_case_2>
-* <edge_case_3>
-* <edge_case_4>
-
-required careful management of:
-
-* <technical concern>
-* <technical concern>
-* <technical concern>
-
----
 
 ## Resources
 
 ### Documentation
 
-* [<resource_name>](link)
-* [<resource_name>](link)
-* [<resource_name>](link)
+* [Stack Data Structure (GeeksforGeeks)](https://www.geeksforgeeks.org/stack-data-structure/)
+* [Sorting Algorithms Visualized (VisuAlgo)](https://visualgo.net/en/sorting)
 
 ### Testing
 
-* [<tester_name>](link)
-* [<tester_name>](link)
+* [Push Swap Visualizer by o-reo](https://github.com/o-reo/push_swap_visualizer)
 
 ### AI Usage
 
 * AI tools were used to refine documentation structure and assist with technical research.
-* <Optional clarification about AI usage.>
+* Research sorting algorithm characteristics and complexity.
 * This project does not include any code generated by AI.

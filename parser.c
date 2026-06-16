@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 15:43:46 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:28:18 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	convert(const char **argv, t_stack	*stack)
 	char	**array;
 	char	**tmp;
 	int		nb;
-	
+
 	while (*argv)
 	{
 		array = ft_split(*argv, ' ');
@@ -106,6 +106,7 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 	convert(argv, tmp);
 	while (tmp->size)
 		push(bench->stack_a, pop(tmp));
+	//print_stack(bench->stack_a);
 	bench->disorder = disorder_check(bench);
 	if (bench->disorder < 0.0001f)
 		print_bench(bench);
@@ -114,15 +115,15 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 		if (bench->adaptive == 1)
 			adaptive_algorithm(bench);
 		else if (bench->algorithm == 1)
-			insertion_sort(bench);
+			bubble_sort(bench);
 		else if (bench->algorithm == 2)
 			bucket_sort(bench);
 		else if (bench->algorithm == 3)
-			merge_sorting(bench);
+			radix_sort(bench);
 		if (bench->bench == 1)
 			print_bench(bench);
+		//print_stack(bench->stack_a);
 	}
-	
 }
 
 /* receives the input, reads flags and stores integers */

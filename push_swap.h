@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/10 14:58:31 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:36:26 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <math.h>
 #include <limits.h>
-
-//REMOVE LATER
-#include <stdio.h>
 
 typedef struct s_stack
 {
@@ -82,6 +78,9 @@ float	disorder_check(t_pushswap *bench);
 /*  insertion sort functions */
 
 void	insertion_sort(t_pushswap *pushswap);
+void	bubble_sort(t_pushswap *pushswap);
+void	radix_sort(t_pushswap *pushswap);
+int 	check_sort(t_stack *stack_a);
 
 /*  bucket sort functions */
 
@@ -90,9 +89,8 @@ void	normalize(t_pushswap *bench);
 int		ranking(t_stack *stackA, int i);
 int		buckets(t_pushswap *bench);
 void	push_buckets(t_pushswap *bench, int high, int low);
-void	sort_stack(t_pushswap *bench, int bucket_count);
-int		highest_index(t_stack *stackB, int high, int low);
-void	push_highest(t_pushswap *bench, int limit);
+void	sort_stack(t_pushswap *bench);
+void	push_highest(t_pushswap *bench, int highest);
 
 /*  merge sort functions */
 
