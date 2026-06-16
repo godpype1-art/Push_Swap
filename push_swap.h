@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 16:11:56 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:36:26 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <math.h>
 #include <limits.h>
-
-//REMOVE LATER
-#include <stdio.h>
 
 typedef struct s_stack
 {
