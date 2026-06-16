@@ -49,9 +49,9 @@ The implementation follows these steps:
 
 Those algorythms are, from small level of disorder to highest level of disorder:
 
-### Insertion Sort
+### Selection Sort
 
-This algorithm takes the element on top of the stack and swaps iteratively unitl it reaches the correct position.
+This algorithm iterates through the stack and pushes to another stack reverse ordered. Then, pushes all the elements back.
 
 ---
 
@@ -61,18 +61,18 @@ This algorithm divide the stack into √n buckets, and push them to another stac
 
 ---
 
-### Merge Sort
+### Radix Sort
 
-This algorithm divides the stack, recursively, enough times that it ends up with a buffer of 1 integer. Then, rejoins the peices sorted.
+This algorythm checks the last bit of every integer, them pushes, reverse sorted, to another stack. Then, pushes all the elements into the original stack.
 
 ---
 ## Adaptive Strategy
 
-The adaptive mode measures the disorder of the input by computing the ratio of inversions to total possible pairs.
+The adaptive mode measures the disorder of the input by computing the ratio of inversions to total optional pairs.
 
-- Low disorder → Insertion Sort
+- Low disorder → Selection Sort
 - Medium disorder → Bucket Sort
-- High disorder → Merge Sort
+- High disorder → Radix Sort
 
 This allows the program to select the most suitable algorithm automatically.
 
@@ -82,9 +82,9 @@ This allows the program to select the most suitable algorithm automatically.
 
 | NAME | WHAT IT DOES 												|
 |------|------------------------------------------------------------|
-| `sa` | swaps the first 2 elements of stack_a					|
-| `sb` | swaps the first 2 elements of stack_b					|
-| `ss` | swaps the first 2 elements of both stacks				|
+| `sa` | swaps the first 2 elements of stack_a						|
+| `sb` | swaps the first 2 elements of stack_b						|
+| `ss` | swaps the first 2 elements of both stacks					|
 | `pa` | pushed the first element of stack_b to the top of stack_a	|
 | `pb` | pushed the first element of stack_a to the top of stack_b	|
 | `ra` | rotates the first element of the stack_a to the bottom		|
@@ -117,10 +117,10 @@ make re		# runs fclean and rebuilds the project
 Execute the program with the format:
 
 ```bash
-./push_swap --<possible-flag-1> --<possible-flag-2> <arguments>
+./push_swap --<optional-flag-1> --<optional-flag-2> <arguments>
 ```
 
-### Possible Flags
+### Optional Flags
 ```bash
 --simple	# forces simple algorithm
 --medium	# forces medium algorithm
