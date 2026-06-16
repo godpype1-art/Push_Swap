@@ -6,13 +6,13 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:42:39 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:44:58 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* void	print_stack(t_stack *tsak)
+/*void	print_stack(t_stack *tsak)
 {
 	int i = 0;
 	printf("start:%d, end:%d\n", tsak->start, tsak->end);
@@ -25,27 +25,7 @@
 	while (i < tsak->size)
 		printf("%d\n", get(tsak, i++));
 	printf("%s\n", "end");
-} */
-
-int	ft_is_valid(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	if (str[i] && (str[i] == '+' || str[i] == '-'))
-		i++;
-	if (str[i] == '\0')
-    	return (0);
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+}*/
 
 /* arrange every arg through atoi */
 void	arrange(t_stack *stack, char *tmp, int *nb)
@@ -59,10 +39,10 @@ void	arrange(t_stack *stack, char *tmp, int *nb)
 	i = 0;
 	while (i < stack->size)
 	{
-		if(get(stack, i) == num)
+		if (get(stack, i) == num)
 			return (handle_error());
 		i++;
-	} 
+	}
 	push(stack, num);
 	nb = 0;
 }
@@ -74,6 +54,7 @@ void	convert(const char **argv, t_stack	*stack)
 	char	**tmp;
 	int		nb;
 
+	nb = 0;
 	while (*argv)
 	{
 		array = ft_split(*argv, ' ');
@@ -88,7 +69,7 @@ void	convert(const char **argv, t_stack	*stack)
 				nb = 0;
 			}
 			else
-				return(handle_error());
+				return (handle_error());
 			tmp++;
 		}
 		free_mem(array);
@@ -100,7 +81,7 @@ void	convert(const char **argv, t_stack	*stack)
 void	create_stack(int argc, char const **argv, t_pushswap *bench)
 {
 	t_stack	*tmp;
-	
+
 	tmp = init_stack(argc);
 	convert(argv, tmp);
 	while (tmp->size)
@@ -113,14 +94,39 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 		if (bench->adaptive == 1)
 			adaptive_algorithm(bench);
 		else if (bench->algorithm == 1)
-			bubble_sort(bench);
+			selection_sort(bench);
 		else if (bench->algorithm == 2)
 			bucket_sort(bench);
 		else if (bench->algorithm == 3)
 			radix_sort(bench);
 		if (bench->bench == 1)
 			print_bench(bench);
-		//print_stack(bench->stack_a);
+	}
+	free_stack(tmp);
+}
+
+void	read_flags(char const *argv[], t_pushswap *bench, int *i)
+{
+	while (argv[*i] && ft_strncmp(argv[*i], "--", 2) == 0 && *i <= 2)
+	{
+		if (ft_strncmp(argv[*i], "--simple", ft_strlen(argv[*i])) == 0
+			&& bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm + 1;
+		else if (ft_strncmp(argv[*i], "--medium", ft_strlen(argv[*i])) == 0
+			&& bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm + 2;
+		else if (ft_strncmp(argv[*i], "--complex", ft_strlen(argv[*i])) == 0
+			&& bench->adaptive == 0)
+			bench->algorithm = 4 * bench->algorithm + 3;
+		else if (ft_strncmp(argv[*i], "--adaptive", ft_strlen(argv[*i])) == 0
+			&& bench->algorithm == 0)
+			bench->adaptive = 1;
+		else if (ft_strncmp(argv[*i], "--bench", ft_strlen(argv[*i])) == 0
+			&& bench->bench == 0)
+			bench->bench = 1;
+		else
+			return (handle_error());
+		(*i)++;
 	}
 }
 
@@ -130,22 +136,7 @@ void	parser(int argc, char const *argv[], t_pushswap *bench)
 	int	i;
 
 	i = 1;
-	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0 && i <= 2)
-	{
-		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm + 1;
-		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm + 2;
-		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0 && bench->adaptive == 0)
-			bench->algorithm = 4 * bench->algorithm +  3;
-		else if (ft_strncmp(argv[i], "--adaptive", ft_strlen(argv[i])) == 0 && bench->algorithm == 0)
-			bench->adaptive = 1;
-		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0 && bench->bench == 0)
-			bench->bench = 1;
-		else
-			return (handle_error());
-		i++;
-	}
+	read_flags(argv, bench, &i);
 	if (bench->algorithm >= 4)
 		return (handle_error());
 	if (bench->algorithm == 0)

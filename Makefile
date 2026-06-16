@@ -7,14 +7,15 @@ SRCS = main.c \
 	parser.c \
 	parser_2.c \
 	stack.c \
+	stack_2.c \
 	adaptive.c \
-	insertion_sort.c \
+	selection_sort.c \
 	bucket_sort.c \
 	bucket_sort_2.c \
-	merge_sort.c \
 	bench.c \
 	push_swap_operations.c \
-	bubble_sort.c \
+	push_swap_operations_2.c \
+	push_swap_operations_3.c \
 	radix_sort.c
 
 OBJ = $(SRCS:.c=.o)

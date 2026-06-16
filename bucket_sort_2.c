@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bucket_sort_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:06:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 14:59:19 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 19:59:57 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push_highest(t_pushswap *bench, int highest)
 	pa(bench);
 }
 
-void sort_stack(t_pushswap *bench)
+void	sort_stack(t_pushswap *bench)
 {
 	int	i;
 	int	highest;
@@ -41,7 +41,7 @@ void sort_stack(t_pushswap *bench)
 	i = 0;
 	highest = 0;
 	if (bench->stack_b->size == 0)
-		return;
+		return ;
 	while (bench->stack_b->size && i < bench->stack_b->size)
 	{
 		if (get(bench->stack_b, i) >= get(bench->stack_b, highest))

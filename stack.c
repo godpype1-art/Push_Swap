@@ -3,27 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:02:49 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 16:08:43 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:25:46 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get(t_stack	*stack, int indice)
+int	get(t_stack	*stack, int index)
 {
-	//printf("indice:%d, get:%d, start:%d, end:%d\n", indice, (stack->start + indice) % stack->allocated_size, stack->start, stack->end);
-	return (stack->array[(stack->start + indice) % stack->allocated_size]);
+	return (stack->array[(stack->start + index) % stack->allocated_size]);
 }
 
-int moduler_remainder(int a, int b)
+int	moduler_remainder(int a, int b)
 {
 	return (((a % b) + b) % b);
 }
 
-void reallocate(t_stack *stack, int newsize)
+void	reallocate(t_stack *stack, int newsize)
 {
 	int	*new;
 	int	indice;
@@ -56,52 +55,11 @@ t_stack	*init_stack(int size)
 	return (stack);
 }
 
-void push(t_stack *stack, int value)
+void	push(t_stack *stack, int value)
 {
 	stack->start = moduler_remainder(stack->start - 1, stack->allocated_size);
 	stack->array[stack->start] = value;
 	stack->size++;
 	if (stack->size == stack->allocated_size)
 		reallocate(stack, stack->allocated_size * 2);
-}
-
-int pop(t_stack *stack)
-{
-	int value;
-
-	value = get(stack, 0);
-	stack->start = moduler_remainder(stack->start + 1, stack->allocated_size);
-	stack->size--;
-	return (value);
-}
-
-void reverse_rotate(t_stack *stack)
-{
-	int value;
-
-	value = get(stack, stack->size - 1);
-	stack->start = moduler_remainder(stack->start - 1, stack->allocated_size);
-	stack->array[stack->start] = value;
-	stack->end = moduler_remainder(stack->end - 1, stack->allocated_size);
-}
-
-void rotate(t_stack *stack)
-{
-	int value;
-
-	value = get(stack, 0);
-	stack->end = moduler_remainder(stack->end + 1, stack->allocated_size);
-	stack->array[stack->end] = value;
-	stack->start = moduler_remainder(stack->start + 1, stack->allocated_size);
-}
-
-void swap_first(t_stack *stack)
-{
-	int value1;
-	int	value2;
-
-	value1 = pop(stack);
-	value2 = pop(stack);
-	push(stack, value1);
-	push(stack, value2);
 }

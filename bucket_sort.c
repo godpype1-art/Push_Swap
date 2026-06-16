@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:29:40 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:47:40 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,4 @@ void	bucket_sort(t_pushswap *bench)
 	normalize(bench);
 	bucket_count = buckets(bench);
 	sort_stack(bench);
-	free(bench->stack_b->array);
-	free(bench->stack_b);
 }

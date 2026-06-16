@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 16:30:42 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:49:55 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	adaptive_algorithm(t_pushswap *bench)
 	high = 0.5f;
 	if (bench->disorder < 0.0001f)
 	{
-		printf("sorted\n");
+		ft_putstr_fd("sorted\n", 1);
 		return ;
 	}
 	else if (bench->disorder < medium)
-		bubble_sort(bench);
+		selection_sort(bench);
 	else if (bench->disorder < high)
 		bucket_sort(bench);
 	else

@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:42:09 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:49:07 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_stack
 
 typedef struct s_pushswap
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		bench;
 	float	disorder;
 	int		adaptive;
@@ -51,56 +51,49 @@ typedef struct s_pushswap
 
 /*  stack functions */
 
-t_stack	*init_stack(int size);
-void	push(t_stack *stack, int value);
-int		pop(t_stack *stack);
-void	reallocate(t_stack *stack, int newsize);
-int		get(t_stack	*stack, int indice);
-void	reverse_rotate(t_stack *stack);
-void	rotate(t_stack *stack);
-void	swap_first(t_stack *stack);
+t_stack		*init_stack(int size);
+void		push(t_stack *stack, int value);
+int			pop(t_stack *stack);
+void		reallocate(t_stack *stack, int newsize);
+int			get(t_stack	*stack, int indice);
+void		reverse_rotate(t_stack *stack);
+void		rotate(t_stack *stack);
+void		swap_first(t_stack *stack);
+void		free_stack(t_stack *stack);
+int			moduler_remainder(int a, int b);
 
 /*  parser functions */
 
-void	parser(int argc, char const *argv[], t_pushswap *bench);
-int		ft_is_valid(char *str);
-void	handle_error(void);
-int		ft_atoi_safe(char *str, int *res);
-void	arrange(t_stack *stack, char *tmp, int *nb);
-void	convert(const char **argv, t_stack	*stack);
-void	create_stack(int argc, char const **argv, t_pushswap *bench);
+void		parser(int argc, char const *argv[], t_pushswap *bench);
+int			ft_is_valid(char *str);
+void		handle_error(void);
+int			ft_atoi_safe(char *str, int *res);
+void		arrange(t_stack *stack, char *tmp, int *nb);
+void		convert(const char **argv, t_stack	*stack);
+void		create_stack(int argc, char const **argv, t_pushswap *bench);
+void		free_mem(char **array);
 
-/*  adaptive sort functions */
+/*  sort functions */
 
-void	adaptive_algorithm(t_pushswap *pushswap);
-float	disorder_check(t_pushswap *bench);
-
-/*  insertion sort functions */
-
-void	insertion_sort(t_pushswap *pushswap);
-void	bubble_sort(t_pushswap *pushswap);
-void	radix_sort(t_pushswap *pushswap);
-int 	check_sort(t_stack *stack_a);
+void		adaptive_algorithm(t_pushswap *pushswap);
+float		disorder_check(t_pushswap *bench);
+void		selection_sort(t_pushswap *pushswap);
+void		radix_sort(t_pushswap *pushswap);
 
 /*  bucket sort functions */
 
-void	bucket_sort(t_pushswap *bench);
-void	normalize(t_pushswap *bench);
-int		ranking(t_stack *stackA, int i);
-int		buckets(t_pushswap *bench);
-void	push_buckets(t_pushswap *bench, int high, int low);
-void	sort_stack(t_pushswap *bench);
-void	push_highest(t_pushswap *bench, int highest);
-
-/*  merge sort functions */
-
-void 	merge_sorting(t_pushswap *stackA);
+void		bucket_sort(t_pushswap *bench);
+void		normalize(t_pushswap *bench);
+int			ranking(t_stack *stackA, int i);
+int			buckets(t_pushswap *bench);
+void		push_buckets(t_pushswap *bench, int high, int low);
+void		sort_stack(t_pushswap *bench);
+void		push_highest(t_pushswap *bench, int highest);
 
 /*  other functions */
 
 void	print_bench(t_pushswap *bench);
-//void	print_stack(t_stack *tsak);
-void	free_mem(char **array);
+void	free_pushswap(t_pushswap *pushswap);
 void	handle_error(void);
 
 void pa(t_pushswap *pushswap);
