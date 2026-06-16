@@ -6,14 +6,13 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 16:28:18 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:42:39 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//REMOVE LATER
-void	print_stack(t_stack *tsak)
+/* void	print_stack(t_stack *tsak)
 {
 	int i = 0;
 	printf("start:%d, end:%d\n", tsak->start, tsak->end);
@@ -26,7 +25,7 @@ void	print_stack(t_stack *tsak)
 	while (i < tsak->size)
 		printf("%d\n", get(tsak, i++));
 	printf("%s\n", "end");
-}
+} */
 
 int	ft_is_valid(char *str)
 {
@@ -106,7 +105,6 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 	convert(argv, tmp);
 	while (tmp->size)
 		push(bench->stack_a, pop(tmp));
-	//print_stack(bench->stack_a);
 	bench->disorder = disorder_check(bench);
 	if (bench->disorder < 0.0001f)
 		print_bench(bench);

@@ -6,7 +6,7 @@
 /*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:36:26 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:42:09 by falves-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void 	merge_sorting(t_pushswap *stackA);
 /*  other functions */
 
 void	print_bench(t_pushswap *bench);
-void	print_stack(t_stack *tsak);
+//void	print_stack(t_stack *tsak);
 void	free_mem(char **array);
 void	handle_error(void);
 
