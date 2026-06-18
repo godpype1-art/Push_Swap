@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:50 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:29:37 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/18 19:36:05 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, const char **argv)
 		return (0);
 	bench = init_pushswap(argc);
 	if (bench == NULL)
-		handle_error();
+		handle_error(bench);
 	else
 		parser(argc, argv, bench);
 	free_pushswap(bench);

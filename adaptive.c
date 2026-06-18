@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:31:33 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 13:49:55 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/18 19:20:41 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ void	adaptive_algorithm(t_pushswap *bench)
 	medium = 0.2f;
 	high = 0.5f;
 	if (bench->disorder < 0.0001f)
-	{
-		ft_putstr_fd("sorted\n", 1);
 		return ;
-	}
 	else if (bench->disorder < medium)
 		selection_sort(bench);
 	else if (bench->disorder < high)

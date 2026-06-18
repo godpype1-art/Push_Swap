@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 18:07:15 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 20:24:52 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/18 21:09:18 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	radix_sort(t_pushswap *pushswap)
 
 	dim = 0;
 	pushswap->algorithm = 3;
-	pushswap->stack_b = init_stack(pushswap->stack_a->allocated_size);
 	while (check_sort(pushswap->stack_a))
 	{
+		if (pushswap->stack_a->size <= 5)
+			return (sort_five(pushswap));
 		if (check_sort_dim(pushswap->stack_a, dim))
 		{
 			dim++;

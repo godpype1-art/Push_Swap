@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: falves-e <falves-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/16 14:04:18 by falves-e         ###   ########.fr       */
+/*   Updated: 2026/06/18 21:08:00 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_pushswap
 	float	disorder;
 	int		adaptive;
 	int		algorithm;
+	int		error;
 	int		sa;
 	int		sb;
 	int		ss;
@@ -66,10 +67,10 @@ int			moduler_remainder(int a, int b);
 
 void		parser(int argc, char const *argv[], t_pushswap *bench);
 int			ft_is_valid(char *str);
-void		handle_error(void);
+void		handle_error(t_pushswap *bench);
 int			ft_atoi_safe(char *str, int *res);
-void		arrange(t_stack *stack, char *tmp, int *nb);
-void		convert(const char **argv, t_stack	*stack);
+void		arrange(t_pushswap *bench, char *tmp, int *nb);
+void		convert(const char **argv, t_pushswap *bench);
 void		create_stack(int argc, char const **argv, t_pushswap *bench);
 void		free_mem(char **array);
 
@@ -79,6 +80,8 @@ void		adaptive_algorithm(t_pushswap *pushswap);
 float		disorder_check(t_pushswap *bench);
 void		selection_sort(t_pushswap *pushswap);
 void		radix_sort(t_pushswap *pushswap);
+void		sort_three(t_pushswap *pushswap);
+void		sort_five(t_pushswap *bench);
 
 /*  bucket sort functions */
 
@@ -94,7 +97,6 @@ void		push_highest(t_pushswap *bench, int highest);
 
 void		print_bench(t_pushswap *bench);
 void		free_pushswap(t_pushswap *pushswap);
-void		handle_error(void);
 void		pa(t_pushswap *pushswap);
 void		pb(t_pushswap *pushswap);
 void		sa(t_pushswap *pushswap);

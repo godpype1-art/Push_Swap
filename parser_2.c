@@ -6,16 +6,17 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:42 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:22:10 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/18 19:23:32 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* standar error issue */
-void	handle_error(void)
+void	handle_error(t_pushswap *bench)
 {
 	ft_putstr_fd("Error\n", 2);
+	bench->error = 1;
 }
 
 void	free_mem(char **array)

@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 19:50:41 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/11 20:28:51 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/18 19:54:51 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_pushswap	*init_pushswap(int size)
 	bench->adaptive = 0;
 	bench->algorithm = 0;
 	bench->total_ops = 0;
+	bench->error = 0;
 	bench->sa = 0;
 	bench->sb = 0;
 	bench->ss = 0;
