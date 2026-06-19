@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 13:41:01 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/18 21:09:49 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:35:15 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ void	bucket_sort(t_pushswap *bench)
 {
 	int		bucket_count;
 
+	bench->algorithm = 2;
 	if (bench->disorder < 0.0001f)
 		return ;
 	if (bench->stack_a->size <= 5)
 		return (sort_five(bench));
-	bench->algorithm = 2;
 	normalize(bench);
 	if (bench->error == 1)
 		return ;

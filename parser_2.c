@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:42 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/18 19:23:32 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:28:32 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	free_mem(char **array)
 	int	i;
 
 	i = 0;
+	if (array == NULL)
+		return ;
 	while (array[i])
 	{
 		free(array[i]);

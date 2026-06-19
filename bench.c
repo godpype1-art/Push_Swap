@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:22:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/11 20:46:40 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:36:04 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	print_bench(t_pushswap *bench)
 	ft_putnbr_fd(whole, fd);
 	ft_putchar_fd('.', fd);
 	ft_putnbr_fd(decimal, fd);
-	ft_putstr_fd("%\n[bench] strategy: ", fd);
+	ft_putstr_fd("\n[bench] strategy: ", fd);
 	print_algorithm(bench, fd);
 	print_ops(bench, fd);
 }

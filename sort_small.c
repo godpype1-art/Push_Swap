@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 20:45:03 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/18 21:09:29 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:31:58 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	push_lowest(t_pushswap *bench, int lowest)
 	{
 		while (lowest > 0)
 		{
-			rb(bench);
+			ra(bench);
 			lowest--;
 		}
 	}
@@ -26,7 +26,7 @@ void	push_lowest(t_pushswap *bench, int lowest)
 	{
 		while (lowest < bench->stack_a->size)
 		{
-			rrb(bench);
+			rra(bench);
 			lowest++;
 		}
 	}
@@ -42,7 +42,7 @@ void	sort_stack_lo(t_pushswap *bench)
 	lowest = 0;
 	while (bench->stack_a->size && i < bench->stack_a->size)
 	{
-		if (get(bench->stack_a, i) <= get(bench->stack_a, lowest))
+		if (get(bench->stack_a, i) < get(bench->stack_a, lowest))
 			lowest = i;
 		i++;
 	}
@@ -71,7 +71,7 @@ void	sort_three(t_pushswap *pushswap)
 	sort_three(pushswap);
 }
 
-void sort_five(t_pushswap *bench)
+void	sort_five(t_pushswap *bench)
 {
 	if (bench->stack_a->size <= 3)
 		return (sort_three(bench));

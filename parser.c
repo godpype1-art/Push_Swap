@@ -6,13 +6,13 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:46 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/18 21:14:15 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:30:07 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 void	print_stack(t_stack *tsak)
 {
@@ -27,7 +27,7 @@ void	print_stack(t_stack *tsak)
 	while (i < tsak->size)
 		printf("%d\n", get(tsak, i++));
 	printf("%s\n", "end");
-}
+}*/
 
 /* arrange every arg through atoi */
 void	arrange(t_pushswap *bench, char *tmp, int *nb)
@@ -57,27 +57,25 @@ void	convert(const char **argv, t_pushswap *bench)
 	int		nb;
 
 	nb = 0;
-	while (*argv)
+	while (*(argv++))
 	{
-		array = ft_split(*argv, ' ');
-		if (array == NULL)
-			return (handle_error(bench));
+		array = ft_split(*(argv - 1), ' ');
+		if (array == NULL || *array == NULL)
+			return (free_mem(array), handle_error(bench));
 		tmp = array;
-		while (*tmp)
+		while (*(tmp++))
 		{
-			if (ft_is_valid(*tmp))
+			if (ft_is_valid(*(tmp - 1)))
 			{
-				arrange(bench, *tmp, &nb);
+				arrange(bench, *(tmp - 1), &nb);
 				if (bench->error)
 					return (free_mem(array));
 				nb = 0;
 			}
 			else
-				return (handle_error(bench));
-			tmp++;
+				return (free_mem(array), handle_error(bench));
 		}
 		free_mem(array);
-		argv++;
 	}
 }
 
@@ -101,7 +99,6 @@ void	create_stack(int argc, char const **argv, t_pushswap *bench)
 		radix_sort(bench);
 	if (bench->bench == 1 && bench->error == 0)
 		print_bench(bench);
-	print_stack(bench->stack_a);
 }
 
 void	read_flags(char const *argv[], t_pushswap *bench, int *i)

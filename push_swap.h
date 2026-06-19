@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:52:43 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/18 21:08:00 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:36:10 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+//# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -76,6 +77,7 @@ void		free_mem(char **array);
 
 /*  sort functions */
 
+//void		print_stack(t_stack *tsak);
 void		adaptive_algorithm(t_pushswap *pushswap);
 float		disorder_check(t_pushswap *bench);
 void		selection_sort(t_pushswap *pushswap);

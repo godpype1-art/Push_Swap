@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 23:30:12 by afranco-          #+#    #+#             */
-/*   Updated: 2026/06/18 21:08:48 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:35:27 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	selection_sort(t_pushswap *pushswap)
 {
 	int	yy;
 
+	pushswap->algorithm = 1;
 	if (pushswap->disorder < 0.0001f)
 		return ;
 	if (pushswap->stack_a->size <= 5)
 		return (sort_five(pushswap));
-	pushswap->algorithm = 1;
 	yy = 1;
 	while (pushswap->stack_a->size)
 		put_number(pushswap);
