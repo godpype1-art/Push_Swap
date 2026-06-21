@@ -6,7 +6,7 @@
 /*   By: afranco- <afranco-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:22:32 by falves-e          #+#    #+#             */
-/*   Updated: 2026/06/19 20:36:04 by afranco-         ###   ########.fr       */
+/*   Updated: 2026/06/21 14:08:20 by afranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	print_algorithm(t_pushswap *bench, int fd)
 	if (bench->adaptive == 1)
 	{
 		if (bench->algorithm == 1)
-			ft_putstr_fd("Adaptive / O(n*n)\n", fd);
+			ft_putstr_fd("Adaptive / O(n^2)\n", fd);
 		else if (bench->algorithm == 2)
 			ft_putstr_fd("Adaptive / O(n√n)\n", fd);
 		else if (bench->algorithm == 3)
@@ -26,7 +26,7 @@ static void	print_algorithm(t_pushswap *bench, int fd)
 	else
 	{
 		if (bench->algorithm == 1)
-			ft_putstr_fd("Simple / O(n*n)\n", fd);
+			ft_putstr_fd("Simple / O(n^2)\n", fd);
 		if (bench->algorithm == 2)
 			ft_putstr_fd("Medium / O(n√n)\n", fd);
 		if (bench->algorithm == 3)
